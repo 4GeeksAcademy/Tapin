@@ -1,4 +1,6 @@
-# Tapin – Local Volunteer / Business Finder Connect App  
+# Tapin 
+
+# Local Volunteer / Business Finder Connect App  
 
 🎯 *A full-stack directory that connects local volunteers with community businesses and opportunities.*  
 
