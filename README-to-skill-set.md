@@ -1,5 +1,5 @@
 # Tapin
-# Local Business Finder Connect-App  
+# Local Volunteer/Business Finder Connect-App  
 
 🎯 *A full-stack directory for discovering and connecting with local businesses.*  
 
