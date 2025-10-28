@@ -1,24 +1,23 @@
-# Tapin
-# Local Volunteer/Business Finder Connect-App  
+# Tapin – Local Volunteer / Business Finder Connect App  
 
-🎯 *A full-stack directory for discovering and connecting with local businesses.*  
+🎯 *A full-stack directory that connects local volunteers with community businesses and opportunities.*  
 
 ---
 
 ## 🧍 Team Details  
 - **Team Size:** 3 members  
 - **Mentor:** [Mentor’s Name]  
-- **Duration:** ~8 weeks  
+- **Duration:** 4 weeks  
 
 ---
 
 ## 1. Objective  
-To build a full-stack web application enabling users to discover, review, and engage with local businesses in their community. Business owners can create profiles and list their services, while users can browse, filter, review, and connect—all powered by your front-end (React, JavaScript, CSS) and back-end (Python, Flask, MySQL) expertise.
+To build a full-stack web application enabling users to discover, review, and connect with local businesses and volunteer opportunities in their community. Business owners and organizations can register listings, while volunteers can browse, filter, review, connect—and sign up for opportunities—all supported by your front-end (React, JavaScript, CSS) and back-end (Python, Flask, MySQL) expertise.
 
 ---
 
 ## 2. Problem Statement  
-Finding reliable local businesses (bakeries, repair shops, tutors, etc.) is often fragmented and lacks meaningful reviews or an intuitive UX. This app aims to centralize listings and provide a user-friendly, mobile-responsive directory empowering both business owners and users.
+Finding relevant local businesses and meaningful volunteer opportunities is often scattered across platforms, outdated, or not easily accessible. This app aims to centralize listings and volunteer opportunities into one user-friendly, mobile-responsive platform that empowers both business/organization owners and volunteers alike.
 
 ---
 
@@ -26,30 +25,31 @@ Finding reliable local businesses (bakeries, repair shops, tutors, etc.) is ofte
 
 **Frontend**  
 - Responsive UI using HTML5, CSS3, JavaScript, React + Bootstrap  
-- Pages: Home, Business Listings, Business Detail (with reviews), User Profile  
+- Pages: Home, Volunteer / Business Listings, Listing Detail (with reviews & sign-ups), User Profile  
 
 **Backend**  
 - RESTful API with Python + Flask  
-- MySQL database through an ORM (SQLAlchemy) for users, business listings, reviews  
-- Secure authentication (password encryption), user roles (owner / user)  
+- MySQL database using ORM (e.g., SQLAlchemy) for users, businesses/organizations, listings, reviews, volunteer sign-ups  
+- Secure authentication (password encryption), user roles (volunteer / organization)  
 
 **Integration**  
-- Map API (Google Maps or OpenStreetMap) for displaying business locations  
-- Email API for account verification + password reset flows  
+- Map API (Google Maps or OpenStreetMap) to display listing locations  
+- Email API for account verification & password reset flows  
 
 **Deployment**  
-- Version control: Git + GitHub with project board + issues  
-- Hosted live via a cloud platform (Heroku, AWS, etc.)  
+- Version control via Git + GitHub (Project board + Issues)  
+- Deployed to production (e.g., Heroku, AWS, or similar)  
 - Documentation: README, API docs, architecture overview  
 
 **Core Features**  
 - User registration & login with encrypted passwords  
 - Password reset via email  
-- CRUD for business listings (by business owners)  
-- CRUD for reviews (by users)  
-- Search/filter businesses by category, location, rating  
-- Map-based view of businesses  
-- Responsive design (desktop + mobile)  
+- CRUD for business/organization listings (by owners)  
+- CRUD for volunteer listings/opportunities (by orgs)  
+- Volunteer sign-up / connect functionality  
+- Search/filter listings by category, location, rating  
+- Map-based view of listings  
+- Responsive design for desktop + mobile  
 - Production deployment  
 
 ---
@@ -57,50 +57,50 @@ Finding reliable local businesses (bakeries, repair shops, tutors, etc.) is ofte
 ## 4. Tech Stack  
 | Layer             | Technology                                           |
 |-------------------|------------------------------------------------------|
-| Frontend          | HTML5 + CSS3 + JavaScript; React + Bootstrap        |
-| Backend           | Python + Flask                                      |
-| Database          | MySQL (via ORM)                                     |
+| Frontend          | HTML5 + CSS3 + JavaScript; React + Bootstrap         |
+| Backend           | Python + Flask                                       |
+| Database          | MySQL (via ORM)                                      |
 | Authentication    | Secure passwords (bcrypt/argon2) + JWT/Flask-Login   |
 | APIs & Integration| Map API + Email API                                  |
-| Version Control   | Git + GitHub (Project Board + Issues)                |
-| Deployment        | Cloud hosting (Heroku, AWS, etc.)                   |
+| Version Control   | Git + GitHub (Project board + Issues)                |
+| Deployment        | Cloud hosting (e.g., Heroku, AWS)                   |
 | Documentation     | README.md, API_DOCS.md, ARCHITECTURE.md             |
 
 ---
 
 ## 5. User Stories (Product Backlog)  
-| ID | User Story                                                                 | Priority |
-|----|---------------------------------------------------------------------------|----------|
-| 1  | As a user, I want to register and log in so I can leave reviews.          | High     |
-| 2  | As a user, I want to reset my password via email so I can recover access. | High     |
-| 3  | As a business owner, I want to create/edit my business listing so I can present my services. | High |
-| 4  | As a user, I want to browse and filter local businesses so I can find the right one. | Medium   |
-| 5  | As a user, I want to view a business detail page (with reviews) to assess it. | Medium   |
-| 6  | As a user, I want to leave a review on a business so I can share feedback. | Medium   |
-| 7  | As a developer, I want to deploy the app to a live environment so it’s accessible. | High     |
-| 8  | As a team member, I want to document API endpoints & architecture so the code is clear. | Low      |
+| ID | User Story                                                                                | Priority |
+|----|-------------------------------------------------------------------------------------------|----------|
+| 1  | As a user, I want to register and log in so I can access my account and participate.       | High     |
+| 2  | As a user, I want to reset my password via email so I can recover access if needed.        | High     |
+| 3  | As a business/organization owner, I want to create and edit my listing so I can present my services or opportunities. | High |
+| 4  | As a volunteer, I want to browse and filter local volunteer opportunities/businesses so I can find the right fit. | Medium   |
+| 5  | As a volunteer, I want to view a listing detail page (with reviews and sign-up option) so I can decide to join. | Medium   |
+| 6  | As a volunteer, I want to sign up/connect to an opportunity so I can contribute.            | Medium   |
+| 7  | As a developer, I want to deploy the app live so it’s accessible to users.                 | High     |
+| 8  | As a team member, I want to document API endpoints and architecture so the project is clear and maintainable. | Low      |
 
 ---
 
 ## 6. Project Milestones & Timeline  
-| Phase   | Deliverable                                     | Duration   |
-|---------|-------------------------------------------------|------------|
-| Phase 1 | Idea validation, wireframes, GitHub setup       | Week 1     |
-| Phase 2 | Authentication + database schema design         | Week 2     |
-| Phase 3 | Business CRUD APIs + Frontend list/detail views | Weeks 3–4  |
-| Phase 4 | Reviews CRUD + search/filter + map integration  | Week 5     |
-| Phase 5 | Styling, responsiveness + testing                | Week 6     |
-| Phase 6 | Deployment + final documentation                 | Week 7     |
-| Phase 7 | Buffer time & presentation prep                  | Week 8     |
+| Phase  | Deliverable                                           | Duration     |
+|--------|-------------------------------------------------------|--------------|
+| Phase 1| Idea validation, wireframes, GitHub setup             | Days 1–2     |
+| Phase 2| Authentication + database schema design               | Days 3–5     |
+| Phase 3| Listings CRUD APIs + Frontend list/detail views       | Days 6–10    |
+| Phase 4| Sign-up/connection feature + search/filter + map integration | Days 11–15   |
+| Phase 5| Styling/responsiveness + testing                      | Days 16–20   |
+| Phase 6| Deployment to production + final documentation        | Days 21–24   |
+| Phase 7| Buffer & presentation prep                             | Days 25–28   |
 
 ---
 
 ## 7. Documentation Deliverables  
-- **README.md** — project overview, setup, usage  
-- **API_DOCS.md** — endpoints, request/response, auth  
-- **ARCHITECTURE.md** — system diagrams, component overview  
-- **Postman Collection** — API testing environment  
-- **DEPLOYMENT.md** — hosting instructions, environment variables  
+- **README.md** — project overview, setup, and usage  
+- **API_DOCS.md** — endpoint definitions, request/response formats, authentication  
+- **ARCHITECTURE.md** — system diagram and component overview  
+- **Postman Collection** — for testing the API endpoints  
+- **DEPLOYMENT.md** — hosting instructions, environment variables, launch steps  
 
 ---
 
@@ -111,4 +111,4 @@ Finding reliable local businesses (bakeries, repair shops, tutors, etc.) is ofte
 
 ---
 
-💬 *Thank you for reviewing our project. We’re motivated to build something meaningful and user-centric, leveraging our combined full-stack skills.*  
+💬 *Thank you for reviewing “Tapin”. We’re excited to build a meaningful platform that bridges local businesses/organizations with volunteers, leveraging our full-stack skills for community impact.*  
