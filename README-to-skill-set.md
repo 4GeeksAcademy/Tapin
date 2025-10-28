@@ -1,6 +1,12 @@
-# Tapin 
+[![Build Status](https://img.shields.io/badge/build-passing-brightgreen?style=for-the-badge&logo=github&logoColor=white)](https://github.com/your-repo)
+[![License](https://img.shields.io/badge/license-MIT-blue?style=for-the-badge&logo=opensourceinitiative&logoColor=white)](LICENSE)
+[![Frontend](https://img.shields.io/badge/Frontend-React-61DAFB?style=for-the-badge&logo=react&logoColor=white)](https://reactjs.org/)
+[![Backend](https://img.shields.io/badge/Backend-Flask-000000?style=for-the-badge&logo=flask&logoColor=white)](https://flask.palletsprojects.com/)
+[![Database](https://img.shields.io/badge/Database-MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)](https://www.mysql.com/)
+[![Map API](https://img.shields.io/badge/Map API-Google Maps-4285F4?style=for-the-badge&logo=google-maps&logoColor=white)](https://developers.google.com/maps)
+[![Volunteering](https://img.shields.io/badge/Volunteering-Community-FF6F00?style=for-the-badge&logo=hands&logoColor=white)](#)
 
-# Local Volunteer / Business Finder Connect App  
+# Tapin – Local Volunteer / Business Finder Connect App  
 
 🎯 *A full-stack directory that connects local volunteers with community businesses and opportunities.*  
 
