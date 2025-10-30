@@ -122,7 +122,18 @@ Finding relevant local businesses and meaningful volunteer opportunities is ofte
 💬 *Thank you for reviewing “Tapin”. We’re excited to build a meaningful platform that bridges local businesses/organizations with volunteers, leveraging our full-stack skills for community impact.*  
 
 
-1. Visual Identity & UI Design
+
+1. Wireframe Diagram
+Created a flowchart-style diagram showing connections between key screens and navigation logic:
+
+Home → Browse by category/search → Detail → Sign Up
+
+Bottom/top navigation for access to Profile, Dashboard, Login
+
+All major screens have clearly labeled sections (cards, filters, map, forms, stats).
+
+
+2. Visual Identity & UI Design
 Defined brand style using “Energetic Human” art direction.
 
 Established a bright blue color system for trust, approachability, and vibrancy.
@@ -133,7 +144,7 @@ Created clean, mobile-first layouts with clear navigation and large, interactive
 
 Designed major screens: Home, Browse Listings, Opportunity Details, Profile, Dashboard.
 
-2. Development Starter Checklist
+3. Development Starter Checklist
 Front-end: Master HTML/CSS/JS, React fundamentals, API integration (fetch/axios), Bootstrap for responsive design.
 
 Back-end: Learn Flask server setup, RESTful API routing, CRUD ops, user authentication (JWT), connect with MySQL via SQLAlchemy.
@@ -144,18 +155,10 @@ Integration: Planned for Google Maps API for location; Email API for notificatio
 
 Version Control: Set up Git/GitHub repo, structured commits and branches; draft project README and Kanban board for issues.
 
-3. User Stories & Issues
+4. User Stories & Issues
 Defined user stories for volunteers, organizations, and visitors (e.g., registration, browsing, filtering, sign-up, dashboards, messaging).
 
 Broke stories into actionable GitHub issues with acceptance criteria.
 
 Topics covered: Authentication, profile edit, opportunity browse/filter/search, map integration, dashboard analytics, accessibility, bug reports.
 
-4. Wireframe Diagram
-Created a flowchart-style diagram showing connections between key screens and navigation logic:
-
-Home → Browse by category/search → Detail → Sign Up
-
-Bottom/top navigation for access to Profile, Dashboard, Login
-
-All major screens have clearly labeled sections (cards, filters, map, forms, stats).
