@@ -1,0 +1,2 @@
+flask
+# TODO: Add other dependencies as needed (e.g., flask_sqlalchemy, flask_jwt_extended, bcrypt)
