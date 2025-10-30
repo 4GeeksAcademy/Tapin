@@ -2,12 +2,17 @@
   "name": "tapin-frontend",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0"
-  },
+  "type": "module",
   "scripts": {
-    "start": "echo 'Run your React dev server here'",
-    "build": "echo 'Build your React app here'"
+    "build": "vite build",
+    "dev": "vite",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0"
   }
 }

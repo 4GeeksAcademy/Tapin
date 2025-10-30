@@ -1,0 +1,31 @@
+# Node
+node_modules/
+web-bundles/
+dist/
+
+# BMAD artifacts (created by installer)
+.bmad-core/
+
+# IDE
+.vscode/
+
+# Python
+.venv/
+env/
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Envs and secrets
+.env
+
+# Databases / local artifacts
+backend/data.db
+data.db
+
+# Logs
+*.log
+
+# macOS
+.DS_Store
