@@ -1,4 +1,4 @@
- Project Scope
+Project Scope
 One key to project success is correctly defining and delimiting projects according to the available time, the expected dedication, and the team's capabilities.
 
 💡 In real life, 70% of coding projects fail because of bad requirements. If the project's scope is not well defined, the team will perceive the failure to achieve the objective negatively, generating frustration and disillusionment.
