@@ -1,3 +1,44 @@
+# BMAD System Agents
+
+You can @-mention the following BMAD and GitHub agents in issues, PRs, or discussions for automated assistance:
+
+**BMAD Agents:**
+- **@bmad-orchestrator** – BMad Master Orchestrator: coordinates all agent activities and workflow execution
+- **@bmad-master** – BMad Master Task Executor: advanced multi-agent task runner
+- **@analyst** – Business Analyst: market research, brainstorming, project briefs, discovery
+- **@pm** – Product Manager: PRDs, product strategy, feature prioritization, roadmap
+- **@po** – Product Owner: backlog management, story refinement, sprint planning
+- **@sm** – Scrum Master: story creation, epic management, agile process guidance
+- **@dev** – Full Stack Developer: implements code and features
+- **@qa** – Test Architect & Quality Advisor: test architecture, code review, quality gates
+- **@architect** – Architect: system design, architecture docs, API/infrastructure planning
+- **@ux-expert** – UX Expert: UI/UX design, wireframes, prototypes, user experience
+
+**GitHub Agents:**
+- **@github-copilot** – AI code completion and suggestions
+- **@github-actions** – Automation workflows (CI/CD, linting, etc.)
+- **@dependabot** – Dependency update bot
+
+_Example usage in issues or PRs:_
+
+```
+@bmad-orchestrator start a new workflow for greenfield-service
+@analyst clarify requirements for the login feature
+@pm break down the next epic
+@ux-expert review the wireframe in wireframe.md
+@architect suggest a scalable API structure
+@po approve the latest user story
+@sm facilitate the next sprint planning
+@dev implement the authentication logic
+@qa review and test script-2.py
+@github-copilot please suggest a refactor for script-2.py
+@github-actions rerun the workflow
+@dependabot recreate this PR
+```
+
+If you add or customize agents, update this section for discoverability.
+
+---
 # Copilot Instructions for Tapin
 
 ## Project Overview
