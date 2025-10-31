@@ -6,6 +6,7 @@ import ListingDetail from './components/ListingDetail';
 import Filters from './components/Filters';
 import LoginForm from './components/LoginForm';
 import CreateListingForm from './components/CreateListingForm';
+import DashboardLanding from './pages/DashboardLanding';
 
 export default function App() {
   const [listings, setListings] = useState([]);
@@ -14,6 +15,8 @@ export default function App() {
   const [selected, setSelected] = useState(null);
   const [activeFilter, setActiveFilter] = useState('All');
   const [token, setToken] = useState(localStorage.getItem('access_token') || null);
+  // Show the marketing-style landing page when there's no token (mobile-first)
+  const [showLanding, setShowLanding] = useState(!token);
   const [user, setUser] = useState(null);
 
   // Helper: fetch listings optionally filtered by q
@@ -92,6 +95,15 @@ export default function App() {
           </li>
         ))}
       </ul>
+    );
+  }
+
+  if (showLanding && !token) {
+    return (
+      <div className="app-root">
+        <Header />
+        <DashboardLanding onEnter={() => setShowLanding(false)} />
+      </div>
     );
   }
 
