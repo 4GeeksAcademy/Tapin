@@ -1,0 +1,422 @@
+{
+  "project": "Tapin \u2014 Volunteer Platform",
+  "version": "1.0.0",
+  "lastUpdated": "2025-10-31",
+  "status": "production-ready",
+  "brand": {
+    "name": "Tapin",
+    "tagline": "Volunteers connect to orgs",
+    "primaryColor": "#0B76FF",
+    "secondaryColor": "#58B2E4"
+  },
+  "assets": [
+    {
+      "id": "logo-primary",
+      "file": "brand/logo.svg",
+      "type": "logo",
+      "alt": "Tapin \u2014 Volunteers connect to orgs. Hand holding location pin.",
+      "use": ["header", "social", "app-icon", "marketing"],
+      "variants": ["monochrome", "reversed"],
+      "colors": ["#0B76FF", "#58B2E4"],
+      "sizes": {
+        "svg": "scalable",
+        "png": ["72px", "144px", "216px"]
+      },
+      "wcag": "AA \u2014 7.2:1 contrast on white"
+    },
+    {
+      "id": "logo-monochrome",
+      "file": "brand/logo-monochrome.svg",
+      "type": "logo",
+      "alt": "Tapin logo \u2014 monochrome blue",
+      "use": ["print", "grayscale-contexts", "single-color"],
+      "colors": ["#0B76FF"],
+      "wcag": "AA"
+    },
+    {
+      "id": "logo-reversed",
+      "file": "brand/logo-reversed.svg",
+      "type": "logo",
+      "alt": "Tapin logo \u2014 reversed white on blue",
+      "use": ["dark-backgrounds", "primary-color-overlays"],
+      "colors": ["#FFFFFF"],
+      "wcag": "AA"
+    },
+    {
+      "id": "favicon",
+      "file": "brand/favicon.ico",
+      "type": "favicon",
+      "alt": "Tapin favicon",
+      "use": ["browser-tab"],
+      "sizes": ["32px x 32px"],
+      "notes": "Generated from logo@1x.png"
+    },
+    {
+      "id": "apple-touch-icon",
+      "file": "brand/apple-touch-icon.png",
+      "type": "app-icon",
+      "alt": "Tapin app icon for iOS home screen",
+      "use": ["ios-shortcut", "home-screen"],
+      "sizes": ["180px x 180px"],
+      "notes": "Square format, safe area centered"
+    },
+    {
+      "id": "logo-1x",
+      "file": "brand/logo@1x.png",
+      "type": "logo-raster",
+      "alt": "Tapin logo raster 1x",
+      "use": ["web-fallback"],
+      "sizes": ["72px height"],
+      "density": "1x"
+    },
+    {
+      "id": "logo-2x",
+      "file": "brand/logo@2x.png",
+      "type": "logo-raster",
+      "alt": "Tapin logo raster 2x",
+      "use": ["web-fallback", "retina"],
+      "sizes": ["144px height"],
+      "density": "2x"
+    },
+    {
+      "id": "logo-3x",
+      "file": "brand/logo@3x.png",
+      "type": "logo-raster",
+      "alt": "Tapin logo raster 3x",
+      "use": ["web-fallback", "high-dpi"],
+      "sizes": ["216px height"],
+      "density": "3x"
+    },
+    {
+      "id": "icon-view",
+      "file": "icons/icon-view.svg",
+      "type": "icon",
+      "alt": "View \u2014 open or expand opportunity details",
+      "use": ["CTA", "list-actions", "button"],
+      "variants": ["icon-view-filled.svg"],
+      "grid": "24px",
+      "stroke": "2px",
+      "colors": ["#0B76FF"],
+      "wcag": "AA"
+    },
+    {
+      "id": "icon-view-filled",
+      "file": "icons/icon-view-filled.svg",
+      "type": "icon",
+      "alt": "View filled \u2014 open or expand",
+      "use": ["active-state", "selected"],
+      "grid": "24px",
+      "colors": ["#0B76FF"],
+      "wcag": "AA"
+    },
+    {
+      "id": "icon-add",
+      "file": "icons/icon-add.svg",
+      "type": "icon",
+      "alt": "Add \u2014 create new opportunity or volunteer",
+      "use": ["FAB", "primary-action", "button"],
+      "variants": ["icon-add-filled.svg"],
+      "grid": "24px",
+      "stroke": "2px",
+      "colors": ["#0B76FF"],
+      "wcag": "AA"
+    },
+    {
+      "id": "icon-add-filled",
+      "file": "icons/icon-add-filled.svg",
+      "type": "icon",
+      "alt": "Add filled",
+      "use": ["active-state"],
+      "grid": "24px",
+      "colors": ["#0B76FF"],
+      "wcag": "AA"
+    },
+    {
+      "id": "icon-edit",
+      "file": "icons/icon-edit.svg",
+      "type": "icon",
+      "alt": "Edit \u2014 modify opportunity or profile",
+      "use": ["secondary-action", "button"],
+      "variants": ["icon-edit-filled.svg"],
+      "grid": "24px",
+      "stroke": "2px",
+      "colors": ["#0B76FF"],
+      "wcag": "AA"
+    },
+    {
+      "id": "icon-edit-filled",
+      "file": "icons/icon-edit-filled.svg",
+      "type": "icon",
+      "alt": "Edit filled",
+      "use": ["active-state"],
+      "grid": "24px",
+      "colors": ["#0B76FF"],
+      "wcag": "AA"
+    },
+    {
+      "id": "icon-delete",
+      "file": "icons/icon-delete.svg",
+      "type": "icon",
+      "alt": "Delete \u2014 remove item or withdraw from opportunity",
+      "use": ["destructive-action", "button"],
+      "variants": ["icon-delete-filled.svg"],
+      "grid": "24px",
+      "stroke": "2px",
+      "colors": ["#EF4444"],
+      "wcag": "AA \u2014 danger color"
+    },
+    {
+      "id": "icon-delete-filled",
+      "file": "icons/icon-delete-filled.svg",
+      "type": "icon",
+      "alt": "Delete filled",
+      "use": ["active-state", "destructive"],
+      "grid": "24px",
+      "colors": ["#EF4444"],
+      "wcag": "AA"
+    },
+    {
+      "id": "icon-map-pin",
+      "file": "icons/map-pin.svg",
+      "type": "icon",
+      "alt": "Location \u2014 map marker pin for address context",
+      "use": ["address-context", "location-badge"],
+      "grid": "24px",
+      "stroke": "2px",
+      "colors": ["#0B76FF"],
+      "wcag": "AA"
+    },
+    {
+      "id": "empty-state",
+      "file": "illustrations/empty-state.svg",
+      "type": "illustration",
+      "alt": "Empty state \u2014 no opportunities available",
+      "use": ["empty-list-state", "onboarding"],
+      "colors": ["#0B76FF", "#58B2E4"],
+      "wcag": "AA"
+    },
+    {
+      "id": "hero-placeholder",
+      "file": "placeholders/hero-16x9@1x.jpg",
+      "type": "placeholder",
+      "alt": "Hero image placeholder 16:9 aspect ratio",
+      "use": ["hero-banner", "cover-image"],
+      "aspect": "16:9",
+      "density": "1x"
+    },
+    {
+      "id": "hero-placeholder-2x",
+      "file": "placeholders/hero-16x9@2x.jpg",
+      "type": "placeholder",
+      "alt": "Hero image placeholder 16:9 2x",
+      "use": ["hero-banner", "retina"],
+      "aspect": "16:9",
+      "density": "2x"
+    },
+    {
+      "id": "card-placeholder",
+      "file": "placeholders/placeholder-16x9@1x.jpg",
+      "type": "placeholder",
+      "alt": "Card image placeholder 16:9 aspect ratio",
+      "use": ["card-image", "opportunity-thumbnail"],
+      "aspect": "16:9",
+      "density": "1x"
+    },
+    {
+      "id": "card-placeholder-2x",
+      "file": "placeholders/placeholder-16x9@2x.jpg",
+      "type": "placeholder",
+      "alt": "Card image placeholder 16:9 2x",
+      "use": ["card-image", "retina"],
+      "aspect": "16:9",
+      "density": "2x"
+    },
+    {
+      "id": "avatar-small",
+      "file": "placeholders/avatar-placeholder-40.png",
+      "type": "avatar",
+      "alt": "Avatar placeholder 40x40 small",
+      "use": ["profile-list", "comments", "recent-activity"],
+      "sizes": ["40px x 40px"]
+    },
+    {
+      "id": "avatar-medium",
+      "file": "placeholders/avatar-placeholder-80.png",
+      "type": "avatar",
+      "alt": "Avatar placeholder 80x80 medium",
+      "use": ["profile-sidebar", "team-member"],
+      "sizes": ["80px x 80px"]
+    },
+    {
+      "id": "social-preview",
+      "file": "social/social-preview.png",
+      "type": "social",
+      "alt": "Social media preview card for Tapin",
+      "use": ["og-image", "twitter-card", "social-share"],
+      "sizes": ["1200px x 630px"],
+      "density": "1x",
+      "notes": "Open Graph compliant, includes logo and tagline"
+    },
+    {
+      "id": "social-preview-2x",
+      "file": "social/social-preview@2x.png",
+      "type": "social",
+      "alt": "Social media preview card 2x resolution",
+      "use": ["og-image-retina"],
+      "sizes": ["2400px x 1260px"],
+      "density": "2x"
+    }
+  ],
+  "colors": {
+    "primary": {
+      "hex": "#0B76FF",
+      "name": "Tapin Blue",
+      "usage": "Primary actions, headers, links, focus states",
+      "wcag": "7.2:1 on white"
+    },
+    "secondary": {
+      "hex": "#58B2E4",
+      "name": "Sky",
+      "usage": "Secondary actions, gradients, hover states",
+      "wcag": "5.8:1 on white"
+    },
+    "accent": {
+      "hex": "#FF8B89",
+      "name": "Coral",
+      "usage": "Highlights, notifications, accent elements",
+      "wcag": "5.2:1 on white"
+    },
+    "success": {
+      "hex": "#10B981",
+      "name": "Emerald",
+      "usage": "Success states, confirmations, completed tasks",
+      "wcag": "5.1:1 on white"
+    },
+    "warning": {
+      "hex": "#F59E0B",
+      "name": "Amber",
+      "usage": "Warning states, pending actions, alerts",
+      "wcag": "4.6:1 on white"
+    },
+    "danger": {
+      "hex": "#EF4444",
+      "name": "Red",
+      "usage": "Error states, destructive actions, danger",
+      "wcag": "4.0:1 on white"
+    },
+    "text_primary": {
+      "hex": "#111826",
+      "name": "Navy",
+      "usage": "Headings, primary text",
+      "wcag": "7.8:1 on white (AAA)"
+    },
+    "text_secondary": {
+      "hex": "#334155",
+      "name": "Slate",
+      "usage": "Body text, descriptions, meta",
+      "wcag": "7.5:1 on white (AAA)"
+    },
+    "background_panel": {
+      "hex": "#F5F8FF",
+      "name": "Frost",
+      "usage": "Card backgrounds, panel fills"
+    },
+    "background_surface": {
+      "hex": "#FFFFFF",
+      "name": "White",
+      "usage": "Primary surface, backgrounds"
+    }
+  },
+  "typography": {
+    "family": "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+    "headings": {
+      "weight": "600\u2013700",
+      "sizes": ["24px", "28px", "32px"]
+    },
+    "subheadings": {
+      "weight": "600",
+      "sizes": ["16px", "18px"]
+    },
+    "body": {
+      "weight": "400\u2013500",
+      "sizes": ["14px", "16px"]
+    },
+    "meta": {
+      "weight": "400",
+      "size": "12px"
+    }
+  },
+  "spacing": {
+    "base_unit": "4px",
+    "common": ["8px", "12px", "16px", "24px", "32px"],
+    "margins_mobile": "16px (compact)",
+    "margins_desktop": "24px (standard)",
+    "padding_compact": "8px\u201316px",
+    "padding_standard": "16px\u201324px"
+  },
+  "breakpoints": {
+    "mobile": "320px\u2013767px",
+    "tablet": "768px\u20131024px",
+    "desktop": "1025px+"
+  },
+  "components": {
+    "button": {
+      "primary": {
+        "background": "#0B76FF",
+        "color": "#FFFFFF",
+        "padding": "12px 24px",
+        "borderRadius": "6px",
+        "hover": "#58B2E4"
+      },
+      "secondary": {
+        "background": "#F5F8FF",
+        "color": "#0B76FF",
+        "border": "2px #0B76FF",
+        "borderRadius": "6px"
+      }
+    },
+    "input": {
+      "border": "1px #334155",
+      "focus": "2px #0B76FF (ring: #E6F1FF)",
+      "error": "1px #EF4444",
+      "disabled": "#E2E8F0"
+    },
+    "card": {
+      "background": "#FFFFFF",
+      "border": "1px #E2E8F0",
+      "borderRadius": "8px\u201312px",
+      "shadow": "0 1px 3px rgba(0,0,0,0.1)"
+    }
+  },
+  "accessibility": {
+    "contrast_thresholds": {
+      "AA": "4.5:1 (normal text), 3:1 (large text/UI)",
+      "AAA": "7:1 (normal text), 4.5:1 (large text)"
+    },
+    "checklist": [
+      "SVGs have descriptive title and aria-label",
+      "Icon buttons have aria-label describing action",
+      "Color never sole indicator of status",
+      "Focus indicators visible and never removed",
+      "Alt text describes function, not 'image'",
+      "Minimum touch target: 48\u00d748px",
+      "Supports prefers-reduced-motion"
+    ]
+  },
+  "files": {
+    "total": 28,
+    "svg": 9,
+    "png": 14,
+    "jpg": 4,
+    "ico": 1
+  },
+  "optimization": {
+    "tool": "optimize-assets.sh",
+    "commands": ["svgo --multipass", "pngquant 256-color", "jpegoptim --max=85 --progressive"],
+    "targets": [
+      "8\u201315% SVG reduction",
+      "20\u201330% PNG reduction",
+      "15\u201325% JPG reduction"
+    ]
+  }
+}
