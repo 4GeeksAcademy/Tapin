@@ -1,3 +1,10 @@
+Flask>=2.0
+pytest>=7.0
+Flask-SQLAlchemy>=3.0
+Flask-JWT-Extended>=4.0
+Flask-Cors>=3.0
+SQLAlchemy>=1.4
+alembic>=1.11
 # Requirements for Tapin backend (Flask app)
 # Created: 2025-10-30
 # The app (backend/app.py) uses Flask, SQLAlchemy, JWT, CORS, and email utilities.

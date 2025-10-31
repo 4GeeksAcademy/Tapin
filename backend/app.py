@@ -2,7 +2,8 @@ from flask import Flask
 from flask import Flask, request, jsonify, url_for
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
+from flask_jwt_extended import JWTManager, jwt_required, get_jwt_identity
+from backend.auth import token_for
 from flask_cors import CORS
 from datetime import datetime
 import os
@@ -13,7 +14,9 @@ from email.message import EmailMessage
 
 app = Flask(__name__)
 base_dir = os.path.abspath(os.path.dirname(__file__))
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(base_dir, 'data.db')
+# Allow overriding the database URL via environment (useful for CI or production)
+default_db = 'sqlite:///' + os.path.join(base_dir, 'data.db')
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('SQLALCHEMY_DATABASE_URI', default_db)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # Secret key used for serializer tokens and other Flask features
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'dev-secret-key')
@@ -30,6 +33,8 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password_hash = db.Column(db.String(128), nullable=False)
+    # simple role column for basic RBAC (default: "user")
+    role = db.Column(db.String(50), default='user')
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
     def to_dict(self):
@@ -55,6 +60,16 @@ class Listing(db.Model):
         }
 
 
+class Item(db.Model):
+    """Simple persistent items for the MVP /api/items endpoints."""
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(200), nullable=False)
+    description = db.Column(db.Text)
+
+    def to_dict(self):
+        return {"id": self.id, "name": self.name, "description": self.description}
+
+
 def get_serializer():
     return URLSafeTimedSerializer(app.config['SECRET_KEY'])
 
@@ -71,6 +86,31 @@ def index():
     return jsonify({"message": "Tapin Backend API Root"})
 
 
+@app.route('/api/health', methods=['GET'])
+def api_health():
+    return jsonify({"status": "ok"}), 200
+
+
+@app.route('/api/items', methods=['GET'])
+def api_list_items():
+    # Return all items from the database
+    items = Item.query.order_by(Item.id.asc()).all()
+    return jsonify({"items": [i.to_dict() for i in items]}), 200
+
+
+@app.route('/api/items', methods=['POST'])
+@jwt_required()
+def api_create_item():
+    data = request.get_json() or {}
+    name = data.get('name')
+    if not name:
+        return jsonify({"error": "name required"}), 400
+    item = Item(name=name, description=data.get('description'))
+    db.session.add(item)
+    db.session.commit()
+    return jsonify(item.to_dict()), 201
+
+
 @app.route('/register', methods=['POST'])
 def register_user():
     data = request.get_json() or {}
@@ -84,8 +124,11 @@ def register_user():
     user = User(email=email, password_hash=pw_hash)
     db.session.add(user)
     db.session.commit()
-    access_token = create_access_token(identity=user.id)
-    return jsonify({"message": "user created", "user": user.to_dict(), "access_token": access_token}), 201
+    # return both access and refresh tokens (identity stored as string)
+    from backend.auth import token_pair
+
+    tokens = token_pair(user)
+    return jsonify({"message": "user created", "user": user.to_dict(), **tokens}), 201
 
 
 @app.route('/login', methods=['POST'])
@@ -96,15 +139,40 @@ def login_user():
     user = User.query.filter_by(email=email).first()
     if not user or not check_password_hash(user.password_hash, password):
         return jsonify({"error": "invalid credentials"}), 401
-    access_token = create_access_token(identity=user.id)
-    return jsonify({"message": "login successful", "access_token": access_token, "user": user.to_dict()})
+    # return both access and refresh tokens to the client
+    from backend.auth import token_pair
+
+    tokens = token_pair(user)
+    return jsonify({"message": "login successful", "user": user.to_dict(), **tokens})
+
+
+@app.route('/refresh', methods=['POST'])
+@jwt_required(refresh=True)
+def refresh_token():
+    """Exchange a valid refresh token for a new access token."""
+    uid = get_jwt_identity()
+    try:
+        uid_int = int(uid)
+    except Exception:
+        uid_int = uid
+    user = db.session.get(User, uid_int)
+    if not user:
+        return jsonify({"error": "user not found"}), 404
+    access_token = token_for(uid_int)
+    return jsonify({"access_token": access_token})
 
 
 @app.route('/me', methods=['GET'])
 @jwt_required()
 def me():
     uid = get_jwt_identity()
-    user = User.query.get(uid)
+    # convert back to int because tokens store identity as string
+    try:
+        uid_int = int(uid)
+    except Exception:
+        uid_int = uid
+    # Use Session.get() which is the modern SQLAlchemy API (avoids LegacyAPIWarning)
+    user = db.session.get(User, uid_int)
     if not user:
         return jsonify({"error": "user not found"}), 404
     return jsonify({"user": user.to_dict()})
@@ -209,7 +277,8 @@ def create_listing():
     title = data.get('title')
     if not title:
         return jsonify({"error": "title required"}), 400
-    owner_id = get_jwt_identity()
+    # JWT identity is stored as string; convert back to int for DB foreign key
+    owner_id = int(get_jwt_identity())
     listing = Listing(title=title, description=data.get('description'), location=data.get('location'), owner_id=owner_id)
     db.session.add(listing)
     db.session.commit()
