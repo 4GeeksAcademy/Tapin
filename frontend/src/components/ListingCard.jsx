@@ -1,33 +1,34 @@
 import React from 'react';
 
-export default function ListingCard({ listing, onSelect }) {
+export default function ListingCard({ listing = {}, onOpen }) {
+  const { title, description, image, location } = listing;
+
   return (
-    <article
-      className="card"
-      role="button"
-      tabIndex={0}
-      onClick={() => onSelect && onSelect(listing)}
-      onKeyDown={(e) => {
-        if (e.key === 'Enter') onSelect && onSelect(listing);
-      }}
-    >
-      <div className="card-main">
-        <div className="card-title">
-          <h3>{listing.title}</h3>
-          {listing.location && <small className="location">{listing.location}</small>}
+    <li className="listing-item">
+      <article className="card" role="article" aria-label={title || 'Listing'}>
+        <div className="card-media" aria-hidden={image ? 'false' : 'true'}>
+          {image ? (
+            <img src={image} alt={title || 'Listing image'} loading="lazy" />
+          ) : (
+            <div className="placeholder" aria-hidden="true">
+              📷
+            </div>
+          )}
+          {location && <div className="media-caption">{location}</div>}
         </div>
-        {listing.description && <p className="card-desc">{listing.description}</p>}
-      </div>
-      <div className="card-meta">
-        <button
-          className="cta"
-          onClick={(e) => {
-            e.stopPropagation(); /* protect click */
-          }}
-        >
-          Sign Up
-        </button>
-      </div>
-    </article>
+
+        <h3 className="card-title">{title || 'Untitled listing'}</h3>
+        <p className="card-desc">{description || 'No description provided.'}</p>
+
+        <div className="card-meta">
+          <span className="muted" aria-hidden="true">
+            {location || ''}
+          </span>
+          <button className="btn-primary" onClick={() => onOpen && onOpen(listing)}>
+            View
+          </button>
+        </div>
+      </article>
+    </li>
   );
 }
