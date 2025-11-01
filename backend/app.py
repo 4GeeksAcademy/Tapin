@@ -14,6 +14,16 @@ from email.message import EmailMessage
 
 app = Flask(__name__)
 base_dir = os.path.abspath(os.path.dirname(__file__))
+# Load .env from repository root in development if python-dotenv is installed
+try:
+    from dotenv import load_dotenv
+
+    repo_root = os.path.abspath(os.path.join(base_dir, '..'))
+    load_dotenv(os.path.join(repo_root, '.env'))
+except Exception:
+    # python-dotenv not installed or .env missing; proceed with environment variables
+    pass
+
 # Allow overriding the database URL via environment (useful for CI or production)
 default_db = 'sqlite:///' + os.path.join(base_dir, 'data.db')
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('SQLALCHEMY_DATABASE_URI', default_db)

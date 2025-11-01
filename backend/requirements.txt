@@ -18,6 +18,7 @@ Flask-Cors>=3.0
 SQLAlchemy>=1.4
 itsdangerous>=2.1
 Werkzeug>=2.2
+python-dotenv>=0.21
 
 # Notes:
 # - smtplib and email are part of the Python standard library; no pip package required.

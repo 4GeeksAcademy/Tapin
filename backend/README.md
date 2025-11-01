@@ -64,6 +64,18 @@ Environment variables
 - `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, `SMTP_USE_TLS` — if you want the app to send real reset emails
  - Recommended: copy `.env.sample` to `.env` for local development. The `backend` app will pick up env vars from the process environment.
  - Added refresh token support: register/login now return both `access_token` and `refresh_token`. Use POST `/refresh` with a refresh token in the Authorization header to obtain a new access token.
+ - The app will automatically load a `.env` file from the repository root if `python-dotenv` is installed. Copy `.env.sample` to `.env` and edit values for local development.
+
+Manage migrations locally
+
+To run migrations from your virtualenv without calling alembic directly, use the included wrapper:
+
+```powershell
+.\.venv\Scripts\Activate.ps1
+python backend/manage.py upgrade
+```
+
+This executes `alembic -c alembic.ini upgrade head` using the active Python interpreter so it works reliably inside your venv.
 
 Database
 
