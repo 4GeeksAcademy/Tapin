@@ -1,9 +1,8 @@
-from flask import Flask
 from flask import Flask, request, jsonify, url_for
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_jwt_extended import JWTManager, jwt_required, get_jwt_identity
-from backend.auth import token_for
+from auth import token_for
 from flask_cors import CORS
 from datetime import datetime
 import os
