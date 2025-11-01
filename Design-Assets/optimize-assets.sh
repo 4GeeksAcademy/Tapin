@@ -3,7 +3,7 @@
 # Minifies SVG, optimizes PNG/JPG, and reports size savings
 # Usage: ./optimize-assets.sh
 
-set -e
+set -euo pipefail
 
 ASSETS_DIR="Design-Assets"
 echo "🎨 Tapin Design Assets — Optimization Script"
@@ -18,25 +18,38 @@ command -v jpegoptim >/dev/null 2>&1 || { echo "⚠️  jpegoptim not found. Ins
 echo "✓ Dependencies found."
 echo ""
 
+# Helper: get file size (portable)
+filesize() {
+  if stat --version >/dev/null 2>&1; then
+    stat -c%s "$1" 2>/dev/null || stat -f%z "$1" 2>/dev/null
+  else
+    stat -f%z "$1" 2>/dev/null || stat -c%s "$1" 2>/dev/null
+  fi
+}
+
 # SVG Optimization
 echo "📦 Optimizing SVG files..."
-find "$ASSETS_DIR" -type f -name "*.svg" | while read file; do
-  original_size=$(stat -f%z "$file" 2>/dev/null || stat -c%s "$file" 2>/dev/null)
-  svgo "$file" --multipass
-  optimized_size=$(stat -f%z "$file" 2>/dev/null || stat -c%s "$file" 2>/dev/null)
+find "$ASSETS_DIR" -type f -name "*.svg" | while IFS= read -r file; do
+  original_size=$(filesize "$file")
+  svgo "$file" --multipass >/dev/null 2>&1 || true
+  optimized_size=$(filesize "$file")
   saved=$(( original_size - optimized_size ))
-  percent=$(( (saved * 100) / original_size ))
+  percent=0
+  if [ "$original_size" -gt 0 ]; then
+    percent=$(( (saved * 100) / original_size ))
+  fi
   echo "  ✓ $file (-${percent}% | -${saved} bytes)"
 done
 
 echo ""
 echo "📦 Optimizing PNG files..."
-find "$ASSETS_DIR" -type f -name "*.png" | while read file; do
-  original_size=$(stat -f%z "$file" 2>/dev/null || stat -c%s "$file" 2>/dev/null)
-  pngquant --force --ext .png --quality=80-95 "$file"
-  optimized_size=$(stat -f%z "$file" 2>/dev/null || stat -c%s "$file" 2>/dev/null)
+find "$ASSETS_DIR" -type f -name "*.png" | while IFS= read -r file; do
+  original_size=$(filesize "$file")
+  # pngquant writes a new file; use --force --ext .png to overwrite
+  pngquant --force --ext .png --quality=80-95 "$file" >/dev/null 2>&1 || true
+  optimized_size=$(filesize "$file")
   saved=$(( original_size - optimized_size ))
-  if [ $saved -gt 0 ]; then
+  if [ "$saved" -gt 0 ]; then
     percent=$(( (saved * 100) / original_size ))
     echo "  ✓ $file (-${percent}% | -${saved} bytes)"
   else
@@ -46,12 +59,12 @@ done
 
 echo ""
 echo "📦 Optimizing JPG files..."
-find "$ASSETS_DIR" -type f \( -name "*.jpg" -o -name "*.jpeg" \) | while read file; do
-  original_size=$(stat -f%z "$file" 2>/dev/null || stat -c%s "$file" 2>/dev/null)
-  jpegoptim --max=85 --progressive --strip-all "$file"
-  optimized_size=$(stat -f%z "$file" 2>/dev/null || stat -c%s "$file" 2>/dev/null)
+find "$ASSETS_DIR" -type f \( -name "*.jpg" -o -name "*.jpeg" \) | while IFS= read -r file; do
+  original_size=$(filesize "$file")
+  jpegoptim --max=85 --progressive --strip-all "$file" >/dev/null 2>&1 || true
+  optimized_size=$(filesize "$file")
   saved=$(( original_size - optimized_size ))
-  if [ $saved -gt 0 ]; then
+  if [ "$saved" -gt 0 ]; then
     percent=$(( (saved * 100) / original_size ))
     echo "  ✓ $file (-${percent}% | -${saved} bytes)"
   else

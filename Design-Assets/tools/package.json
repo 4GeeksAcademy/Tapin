@@ -1,0 +1,13 @@
+{
+  "name": "tapin-assets-tools",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Small asset helper tools for Tapin (SVG -> PNG generation)",
+  "scripts": {
+    "generate": "node generate-pngs.js"
+  },
+  "dependencies": {
+    "sharp": "^0.32.0",
+    "svgo": "^3.0.0"
+  }
+}
