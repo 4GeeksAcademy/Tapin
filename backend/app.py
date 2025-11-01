@@ -39,6 +39,38 @@ db = SQLAlchemy(app)
 jwt = JWTManager(app)
 
 
+def _warn_on_default_secrets():
+    """Log a warning if important secret env vars are left at their dev defaults.
+
+    This is only advisory and will not stop the app from running. It's helpful
+    for local dev and in CI to call out missing secret configuration.
+    """
+    defaults = {
+        'SECRET_KEY': 'dev-secret-key',
+        'SECURITY_PASSWORD_SALT': 'dev-salt',
+    }
+    missing = []
+    for key, default_val in defaults.items():
+        val = os.environ.get(key, app.config.get(key))
+        if not val or (isinstance(val, str) and val == default_val):
+            missing.append(key)
+    # JWT_SECRET_KEY may default to SECRET_KEY; still warn if it's the same as the dev key
+    jwt_key = os.environ.get('JWT_SECRET_KEY', app.config.get('JWT_SECRET_KEY'))
+    if not jwt_key or jwt_key == app.config.get('SECRET_KEY') == defaults['SECRET_KEY']:
+        missing.append('JWT_SECRET_KEY')
+
+    if missing:
+        app.logger.warning(
+            "Missing or default secrets detected: %s.\n"
+            "For local dev copy `.env.sample` -> `.env` and set strong values."
+            " See backend/CONFIG.md for details.",
+            ', '.join(sorted(set(missing)))
+        )
+
+
+_warn_on_default_secrets()
+
+
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), unique=True, nullable=False)

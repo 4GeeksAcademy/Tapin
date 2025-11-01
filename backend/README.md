@@ -77,6 +77,10 @@ python backend/manage.py upgrade
 
 This executes `alembic -c alembic.ini upgrade head` using the active Python interpreter so it works reliably inside your venv.
 
+Configuration & secrets
+
+See `backend/CONFIG.md` for a list of environment variables used by the backend, recommended local defaults, and CI secret guidance. This document shows example GitHub Actions snippets for injecting secrets into workflows.
+
 Database
 
 - By default the app uses SQLite at `backend/data.db` (created automatically).
