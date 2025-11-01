@@ -31,8 +31,8 @@ export default function App() {
       if (!res.ok) throw new Error(`status ${res.status}`);
       const data = await res.json();
       setListings(data);
-    } catch (e) {
-      setError(e.message);
+    } catch (error_) {
+      setError(error_.message);
     } finally {
       setLoading(false);
     }
@@ -40,11 +40,11 @@ export default function App() {
 
   // Initialize filter from URL and fetch
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
+    const params = new URLSearchParams(globalThis.location.search);
     const q = params.get('q') || 'All';
     setActiveFilter(q);
     fetchListings(q);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+     
   }, []);
 
   useEffect(() => {
@@ -60,7 +60,7 @@ export default function App() {
         }
         const data = await res.json();
         setUser(data.user);
-      } catch (_) {
+      } catch {
         setUser(null);
       }
     }
@@ -73,12 +73,12 @@ export default function App() {
 
   function handleFilterChange(filter) {
     setActiveFilter(filter);
-    const params = new URLSearchParams(window.location.search);
+    const params = new URLSearchParams(globalThis.location.search);
     if (!filter || filter === 'All') params.delete('q');
     else params.set('q', filter);
     const qs = params.toString();
-    const newUrl = qs ? `?${qs}` : window.location.pathname;
-    window.history.replaceState(null, '', newUrl);
+    const newUrl = qs ? `?${qs}` : globalThis.location.pathname;
+    globalThis.history.replaceState(null, '', newUrl);
     fetchListings(filter);
   }
 

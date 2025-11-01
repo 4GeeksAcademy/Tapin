@@ -24,8 +24,8 @@ export default function CreateListingForm({ token, onCreated }) {
       setDescription('');
       setLocation('');
       onCreated && onCreated(data);
-    } catch (e) {
-      setError(e.message);
+    } catch (error_) {
+      setError(error_.message);
     }
   }
 

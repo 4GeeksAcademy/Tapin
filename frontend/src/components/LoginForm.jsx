@@ -19,8 +19,8 @@ export default function LoginForm({ onLogin, mode = 'login' }) {
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || 'auth failed');
       onLogin && onLogin(data);
-    } catch (e) {
-      setError(e.message);
+    } catch (error_) {
+      setError(error_.message);
     }
   }
 

@@ -1,13 +1,22 @@
 import js from '@eslint/js';
 import eslintConfigPrettier from 'eslint-config-prettier/flat';
 import nodePlugin from 'eslint-plugin-n';
+import react from 'eslint-plugin-react';
+import reactHooks from 'eslint-plugin-react-hooks';
 import unicorn from 'eslint-plugin-unicorn';
 import yml from 'eslint-plugin-yml';
 
 export default [
   // Global ignores for files/folders that should not be linted
   {
-    ignores: ['dist/**', 'coverage/**', '**/*.min.js'],
+    ignores: [
+      'dist/**',
+      'coverage/**',
+      '**/*.min.js',
+      '.venv/**',
+      'backend/.venv/**',
+      '**/site-packages/**',
+    ],
   },
 
   // Base JavaScript recommended rules
@@ -24,6 +33,46 @@ export default [
 
   // Place Prettier last to disable conflicting stylistic rules
   eslintConfigPrettier,
+
+  // React/JSX support for frontend
+  {
+    files: ['frontend/**/*.{js,jsx}'],
+    ...react.configs.flat.recommended,
+    ...react.configs.flat['jsx-runtime'],
+    plugins: {
+      'react-hooks': reactHooks,
+    },
+    rules: {
+      ...reactHooks.configs.recommended.rules,
+      'react/prop-types': 'off', // Disable prop-types if using TypeScript or prefer runtime checks
+      'unicorn/filename-case': 'off', // Allow PascalCase for React components
+      'no-unused-vars': ['error', { varsIgnorePattern: '^React$|^_' }], // Allow unused React import for JSX
+      'react-hooks/purity': 'off', // Allow Date.now and other impure calls in components
+    },
+    settings: {
+      react: {
+        version: 'detect',
+      },
+    },
+    languageOptions: {
+      globals: {
+        // Browser globals
+        window: 'readonly',
+        document: 'readonly',
+        localStorage: 'readonly',
+        sessionStorage: 'readonly',
+        fetch: 'readonly',
+        URLSearchParams: 'readonly',
+        FormData: 'readonly',
+        console: 'readonly',
+      },
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
+    },
+  },
 
   // Project-specific tweaks
   {
