@@ -46,7 +46,13 @@ export default [
       ...reactHooks.configs.recommended.rules,
       'react/prop-types': 'off', // Disable prop-types if using TypeScript or prefer runtime checks
       'unicorn/filename-case': 'off', // Allow PascalCase for React components
-      'no-unused-vars': ['error', { varsIgnorePattern: '^React$|^_' }], // Allow unused React import for JSX
+      'no-unused-vars': [
+        'error',
+        {
+          varsIgnorePattern: '^React$|^_|^[A-Z]', // Allow unused React, _ prefix, and PascalCase (components)
+          argsIgnorePattern: '^_',
+        },
+      ],
       'react-hooks/purity': 'off', // Allow Date.now and other impure calls in components
     },
     settings: {
