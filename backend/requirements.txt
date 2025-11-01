@@ -19,6 +19,7 @@ SQLAlchemy>=1.4
 itsdangerous>=2.1
 Werkzeug>=2.2
 python-dotenv>=0.21
+click>=8.0
 
 # Notes:
 # - smtplib and email are part of the Python standard library; no pip package required.
