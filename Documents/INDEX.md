@@ -71,6 +71,7 @@ This strategy serves both community service needs and local economic growth whil
 
 ### Strategy & Scope
 
+- **[INNOVATION-STRATEGY.md](INNOVATION-STRATEGY.md)** - 🚀 Next-level innovation: Community Credits economy
 - **[PLATFORM-SCOPE.md](PLATFORM-SCOPE.md)** - ⭐ Platform scope & dual-purpose strategy
 - **[Project-Roadmap.md](Project-Roadmap.md)** - Development roadmap with updated user stories
 
@@ -99,9 +100,11 @@ These files are kept for reference but are no longer actively used.
 ### For Students/Learners
 
 1. Start with **[../README.md](../README.md)** - Project overview
-2. Follow **[Local-Demo-Guide.md](Local-Demo-Guide.md)** - Run the app locally
-3. Review **[Sprint-1-Completion-Report.md](Sprint-1-Completion-Report.md)** - What was built
-4. Check **[Story-3.1-Map-Testing.md](Story-3.1-Map-Testing.md)** - Latest features
+2. Review **[PLATFORM-SCOPE.md](PLATFORM-SCOPE.md)** - Understand the dual-purpose strategy
+3. Check **[Project-Roadmap.md](Project-Roadmap.md)** - See user stories and sprint breakdown
+4. Follow **[Local-Demo-Guide.md](Local-Demo-Guide.md)** - Run the app locally
+5. Review **[Sprint-1-Completion-Report.md](Sprint-1-Completion-Report.md)** - What was built
+6. Check **[Story-3.1-Map-Testing.md](Story-3.1-Map-Testing.md)** - Latest features
 
 ### For Instructors/Reviewers
 
