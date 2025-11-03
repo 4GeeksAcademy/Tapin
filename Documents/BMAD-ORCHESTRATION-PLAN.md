@@ -203,12 +203,12 @@ Transform Tapin from basic MVP into AI-powered hyperlocal matching platform by i
 
 **Deliverables:**
 
-- [ ] "Invisible AI" design principles document (Week 1)
-- [ ] Mockups: Personalized recommendations section (Week 3)
-- [ ] Urgent alert notification designs (mobile + desktop) (Week 5)
-- [ ] Loading/processing state animations (Week 6)
-- [ ] "Why this match?" explanation tooltips (Week 8)
-- [ ] User testing sessions (3 rounds) (Weeks 4, 8, 12)
+- [ ] "Invisible AI" design principles document (Sprint 1 - Early)
+- [ ] Mockups: Personalized recommendations section (Sprint 1 - Late)
+- [ ] Urgent alert notification designs (mobile + desktop) (Sprint 2 - Early)
+- [ ] Loading/processing state animations (Sprint 2 - Mid)
+- [ ] "Why this match?" explanation tooltips (Sprint 2 - Final)
+- [ ] User testing sessions (3 rounds) (End of each sprint)
 
 **Dependencies:** @pm's feature prioritization, @dev's API readiness
 
@@ -222,54 +222,51 @@ Transform Tapin from basic MVP into AI-powered hyperlocal matching platform by i
 # bmad-core/workflows/phase-2-ai-infrastructure.yaml
 
 workflow_name: 'Phase 2: AI Infrastructure Setup'
-duration: '12 weeks'
+approach: 'Iterative development with 3 sprints'
 goal: 'Ship semantic search, auto-enrichment, and urgent matching'
 
 sprints:
   - sprint_1:
-      duration: 'Weeks 1-4'
       theme: 'Foundation - Infrastructure & First AI Agent'
       stories: ['US4.1', 'US4.3']
 
   - sprint_2:
-      duration: 'Weeks 5-8'
       theme: 'Intelligence - Semantic Search & Recommendations'
       stories: ['US5.1', 'US5.2']
 
   - sprint_3:
-      duration: 'Weeks 9-12'
       theme: 'Real-Time - Urgent Matching & Alerts'
       stories: ['US6.1', 'US6.2', 'US6.3']
 ```
 
 ---
 
-## 📅 Sprint 1: Foundation (Weeks 1-4)
+## 📅 Sprint 1: Foundation (4 Iterations)
 
-### Week 1: Planning & Setup
+### Iteration 1: Planning & Setup
 
-**Monday - Sprint Planning**
+**Sprint Planning - Initial Setup**
 
-- @sm: Facilitate sprint planning meeting
+- @sm: Facilitate sprint planning
 - @po: Present refined user stories (US4.1, US4.3)
 - @dev: Estimate story points
 - @pm: Confirm sprint goals and deliverables
 
-**Tuesday-Wednesday - Research & Design**
+**Research & Design Phase**
 
 - @analyst: Complete vector database research → Recommendation report
 - @architect: Design Postgres migration strategy
 - @architect: Design Redis + Celery architecture
 - @ux-expert: Draft "Invisible AI" design principles
 
-**Thursday-Friday - Infrastructure Setup**
+**Infrastructure Setup Phase**
 
 - @dev: Set up Postgres locally + Render instance
 - @dev: Install Redis and Celery
 - @dev: Create base AI agent classes
 - @qa: Write test strategy document
 
-**Deliverables by EOW1:**
+**Sprint 1, Iteration 1 Milestones:**
 
 - ✅ Vector database selected
 - ✅ Postgres + Redis running locally
@@ -278,7 +275,7 @@ sprints:
 
 ---
 
-### Week 2: Database Migration
+### Iteration 2: Database Migration
 
 **@dev Tasks:**
 
@@ -301,7 +298,7 @@ sprints:
 - [ ] Document schema changes
 - [ ] Update API_DOCS.md with new endpoints
 
-**Deliverables by EOW2:**
+**Sprint 1, Iteration 2 Milestones:**
 
 - ✅ Database migrated to Postgres
 - ✅ Zero data loss verified
@@ -309,7 +306,7 @@ sprints:
 
 ---
 
-### Week 3: First AI Agent - Auto-Geocoding (US4.1)
+### Iteration 3: First AI Agent - Auto-Geocoding (US4.1)
 
 **@dev Tasks:**
 
@@ -332,7 +329,7 @@ sprints:
 - [ ] "Verifying location..." loading state
 - [ ] Map preview during listing creation
 
-**Deliverables by EOW3:**
+**Sprint 1, Iteration 3 Milestones:**
 
 - ✅ Auto-geocoding working on all new listings
 - ✅ 95%+ accuracy on valid addresses
@@ -340,7 +337,7 @@ sprints:
 
 ---
 
-### Week 4: Quality Scoring (US4.3) & Sprint Review
+### Iteration 4: Quality Scoring (US4.3) & Sprint Review
 
 **@dev Tasks:**
 
@@ -367,7 +364,7 @@ sprints:
 - [ ] Sprint retrospective
 - [ ] Calculate velocity for Sprint 2 planning
 
-**Deliverables by EOW4:**
+**Sprint 1 Complete - Milestones:**
 
 - ✅ Sprint 1 complete (US4.1, US4.3)
 - ✅ Auto-geocoding + quality scoring live
@@ -375,9 +372,9 @@ sprints:
 
 ---
 
-## 📅 Sprint 2: Intelligence (Weeks 5-8)
+## 📅 Sprint 2: Intelligence (4 Iterations)
 
-### Week 5: Vector Database Setup
+### Sprint 2, Iteration 1: Vector Database Setup
 
 **@dev Tasks:**
 
@@ -397,9 +394,9 @@ sprints:
 
 - [ ] Test embedding generation performance
 - [ ] Verify vector storage and retrieval
-- [ ] Generate test queries for Week 6
+- [ ] Generate test queries for iteration 2
 
-**Deliverables by EOW5:**
+**Sprint 2, Iteration 1 Milestones:**
 
 - ✅ Vector database operational
 - ✅ All listings have embeddings
@@ -407,7 +404,7 @@ sprints:
 
 ---
 
-### Week 6: Semantic Search (US5.1)
+### Sprint 2, Iteration 2: Semantic Search (US5.1)
 
 **@dev Tasks:**
 
@@ -430,7 +427,7 @@ sprints:
 - [ ] "Because you searched for..." explanations
 - [ ] Highlight matching keywords
 
-**Deliverables by EOW6:**
+**Sprint 2, Iteration 2 Milestones:**
 
 - ✅ Semantic search live and working
 - ✅ >4/5 relevance score from testers
@@ -438,7 +435,7 @@ sprints:
 
 ---
 
-### Week 7: Personalized Recommendations (US5.2)
+### Sprint 2, Iteration 3: Personalized Recommendations (US5.2)
 
 **@dev Tasks:**
 
@@ -460,7 +457,7 @@ sprints:
 - [ ] Verify cache invalidation
 - [ ] Cold start problem (new users)
 
-**Deliverables by EOW7:**
+**Sprint 2, Iteration 3 Milestones:**
 
 - ✅ Personalized recommendations working
 - ✅ 40%+ click-through rate
@@ -468,7 +465,7 @@ sprints:
 
 ---
 
-### Week 8: Sprint Review & Optimization
+### Sprint 2, Iteration 4: Sprint Review & Optimization
 
 **@dev Tasks:**
 
@@ -488,7 +485,7 @@ sprints:
 - [ ] Gather feedback
 - [ ] Adjust Sprint 3 priorities if needed
 
-**Deliverables by EOW8:**
+**Sprint 2 Complete - Milestones:**
 
 - ✅ Sprint 2 complete (US5.1, US5.2)
 - ✅ AI search and recommendations live
@@ -496,9 +493,9 @@ sprints:
 
 ---
 
-## 📅 Sprint 3: Real-Time (Weeks 9-12)
+## 📅 Sprint 3: Real-Time (4 Iterations)
 
-### Week 9: Urgent Matching System (US6.1)
+### Sprint 3, Iteration 1: Urgent Matching System (US6.1)
 
 **@dev Tasks:**
 
@@ -520,7 +517,7 @@ sprints:
 - [ ] Verify urgency scoring
 - [ ] Load test: 100 urgent requests/hour
 
-**Deliverables by EOW9:**
+**Sprint 3, Iteration 1 Milestones:**
 
 - ✅ Urgent matching working
 - ✅ Correct providers identified
@@ -528,7 +525,7 @@ sprints:
 
 ---
 
-### Week 10: Real-Time Alerts (US6.2)
+### Sprint 3, Iteration 2: Real-Time Alerts (US6.2)
 
 **@dev Tasks:**
 
@@ -551,7 +548,7 @@ sprints:
 - [ ] Measure delivery time (<30 seconds)
 - [ ] Test concurrent alerts (multiple urgent needs)
 
-**Deliverables by EOW10:**
+**Sprint 3, Iteration 2 Milestones:**
 
 - ✅ Real-time alerts working
 - ✅ <30 second delivery time
@@ -559,7 +556,7 @@ sprints:
 
 ---
 
-### Week 11: Availability Toggle (US6.3)
+### Sprint 3, Iteration 3: Availability Toggle (US6.3)
 
 **@dev Tasks:**
 
@@ -581,7 +578,7 @@ sprints:
 - [ ] Verify calendar sync
 - [ ] Test auto-availability detection
 
-**Deliverables by EOW11:**
+**Sprint 3, Iteration 3 Milestones:**
 
 - ✅ Availability toggle working
 - ✅ Calendar integration functional
@@ -589,11 +586,11 @@ sprints:
 
 ---
 
-### Week 12: Sprint Review, Testing & Launch
+### Sprint 3, Iteration 4: Sprint Review, Testing & Launch
 
 **@dev Tasks:**
 
-- [ ] Code freeze (Monday)
+- [ ] Code freeze
 - [ ] Bug fixes only
 - [ ] Performance tuning
 - [ ] Documentation finalization
@@ -618,7 +615,7 @@ sprints:
 - [ ] Phase 2 completion report
 - [ ] Phase 3 planning kickoff
 
-**Deliverables by EOW12:**
+**Sprint 3 Complete - Final Milestones:**
 
 - ✅ Phase 2 complete and launched
 - ✅ 3 AI features live (geocoding, search, urgent matching)
@@ -662,7 +659,7 @@ sprints:
 
 - **Likelihood:** Medium
 - **Impact:** High
-- **Mitigation:** @analyst to benchmark all options in Week 1
+- **Mitigation:** @analyst to benchmark all options in Sprint 1, Iteration 1
 - **Owner:** @architect + @dev
 
 **Risk 2: ML Model Accuracy**
@@ -683,7 +680,7 @@ sprints:
 
 - **Likelihood:** Medium
 - **Impact:** Medium
-- **Mitigation:** Load testing in Week 10, fallback to email alerts
+- **Mitigation:** Load testing in Sprint 1, Iteration 10, fallback to email alerts
 - **Owner:** @dev + @qa
 
 ---
@@ -738,41 +735,41 @@ sprints:
 - [ ] Design Postgres migration plan
 - [ ] Document new database schema
 - [ ] Create Docker Compose file for local dev
-- [ ] Review by Thursday
+- [ ] Submit for review
 
 ### @dev
 
 - [ ] Set up Postgres locally
 - [ ] Install Redis + Celery
 - [ ] Create base AI agent classes
-- [ ] Test environment ready by Friday
+- [ ] Test environment ready
 
 ### @po
 
 - [ ] Refine US4.1 (Auto-geocoding) acceptance criteria
 - [ ] Refine US4.3 (Quality scoring) acceptance criteria
 - [ ] Prepare Sprint 1 backlog
-- [ ] Grooming session Wednesday
+- [ ] Grooming session scheduled
 
 ### @qa
 
 - [ ] Write AI test strategy document
 - [ ] Set up test data generator
 - [ ] Define performance benchmarks
-- [ ] Ready for Week 2 testing
+- [ ] Ready for iteration 2 testing
 
 ### @ux-expert
 
 - [ ] Draft "Invisible AI" design principles
 - [ ] Sketch recommendation section layouts
-- [ ] Review with @pm by Thursday
+- [ ] Submit for @pm review
 
 ### @sm
 
-- [ ] Schedule all ceremonies (send calendar invites)
-- [ ] Set up project tracking (Jira/GitHub Projects)
+- [ ] Configure sprint coordination
+- [ ] Set up project tracking (GitHub Projects)
 - [ ] Create Sprint 1 board
-- [ ] Kick off meeting Monday 10am
+- [ ] Initial sprint coordination
 
 ### @pm
 
@@ -813,7 +810,7 @@ A user story is DONE when:
 
 Phase 2 starts NOW. Each agent knows their role. The roadmap is clear. Let's ship AI features that delight users and scale to thousands!
 
-**Next Milestone:** Week 4 - Sprint 1 Review (First AI agent live!)
+**Next Milestone:** Sprint 1 Complete (First AI agent live!)
 
 ---
 

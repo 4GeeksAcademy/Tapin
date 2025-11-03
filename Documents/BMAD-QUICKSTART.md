@@ -1,14 +1,14 @@
 # 🚀 BMad Orchestration - Quick Start
 
 **Date:** November 3, 2025  
-**Status:** Active - Week 1 Starting  
+**Status:** Active - Sprint 1 Starting  
 **Phase:** Phase 2 - AI Infrastructure
 
 ---
 
 ## 📋 What Just Happened?
 
-The BMad orchestrator (@bmad-orchestrator) has analyzed the Tapin platform, reviewed all documentation, and created a complete 12-week execution plan with clear role assignments for each agent.
+The BMad orchestrator (@bmad-orchestrator) has analyzed the Tapin platform, reviewed all documentation, and created a complete execution plan with clear role assignments for each agent across 3 sprints.
 
 ---
 
@@ -16,11 +16,11 @@ The BMad orchestrator (@bmad-orchestrator) has analyzed the Tapin platform, revi
 
 ### All Agents - Read These First:
 
-1. **[BMAD-ORCHESTRATION-PLAN.md](BMAD-ORCHESTRATION-PLAN.md)** - Complete 12-week plan
+1. **[BMAD-ORCHESTRATION-PLAN.md](BMAD-ORCHESTRATION-PLAN.md)** - Complete sprint plan
 2. **[AI-PRODUCT-ROADMAP.md](AI-PRODUCT-ROADMAP.md)** - All 47 user stories
 3. **[EXEC-SUMMARY.md](EXEC-SUMMARY.md)** - Quick overview
 
-### Agent-Specific Tasks (Week 1):
+### Agent-Specific Tasks (Sprint 1, Iteration 1):
 
 #### @analyst
 
@@ -33,7 +33,7 @@ The BMad orchestrator (@bmad-orchestrator) has analyzed the Tapin platform, revi
 - Vector database comparison (Pinecone vs Weaviate vs pgvector)
 - Performance benchmarks with real data
 - Cost projections (Years 1-3)
-- **Recommendation report due Friday EOD**
+- **Recommendation report**
 
 **Why This Matters:** This decision impacts AI performance and costs for 2+ years
 
@@ -47,11 +47,11 @@ The BMad orchestrator (@bmad-orchestrator) has analyzed the Tapin platform, revi
 
 **Key Deliverables:**
 
-- [ ] Postgres running locally + Render (by Tuesday)
-- [ ] Redis + Celery operational (by Wednesday)
-- [ ] Data migrated SQLite → Postgres (by Thursday)
-- [ ] Base AI agent classes created (by Friday)
-- [ ] Agents triggered on listing creation (by Friday)
+- [ ] Postgres running locally + Render
+- [ ] Redis + Celery operational
+- [ ] Data migrated SQLite → Postgres
+- [ ] Base AI agent classes created
+- [ ] Agents triggered on listing creation
 
 **Why This Matters:** Enables all future AI development
 
@@ -65,10 +65,10 @@ The BMad orchestrator (@bmad-orchestrator) has analyzed the Tapin platform, revi
 
 **Key Deliverables:**
 
-- Postgres migration strategy (Week 1)
-- API contracts for AI endpoints (Week 2)
-- ML model selection rationale (Week 2)
-- Docker compose setup (Week 3)
+- Postgres migration strategy (Sprint 1 - Early)
+- API contracts for AI endpoints (Sprint 1 - Mid)
+- ML model selection rationale (Sprint 1 - Mid)
+- Docker compose setup (Sprint 1 - Late)
 
 **Work With:** @analyst (vector DB decision), @dev (implementation)
 
@@ -82,10 +82,10 @@ The BMad orchestrator (@bmad-orchestrator) has analyzed the Tapin platform, revi
 
 **Key Deliverables:**
 
-- Sprint breakdown (3 sprints × 4 weeks)
+- Sprint breakdown (3 sprints × 4 iterations each)
 - Feature prioritization (MoSCoW)
 - Risk register
-- Weekly stakeholder reports
+- Regular stakeholder reports
 
 **Work With:** @po (backlog), @sm (ceremonies)
 
@@ -116,8 +116,8 @@ The BMad orchestrator (@bmad-orchestrator) has analyzed the Tapin platform, revi
 
 **Key Deliverables:**
 
-- Schedule all ceremonies (Week 1)
-- Daily standups (10am PST async)
+- Configure sprint coordination
+- Async status updates via GitHub Issues
 - Sprint velocity tracking
 - Blocker resolution
 
@@ -133,10 +133,10 @@ The BMad orchestrator (@bmad-orchestrator) has analyzed the Tapin platform, revi
 
 **Key Deliverables:**
 
-- AI test strategy document (Week 1)
-- Test data generator (Week 2)
+- AI test strategy document (Sprint 1 - Early)
+- Test data generator (Sprint 1 - Mid)
 - Automated test suite (ongoing)
-- Performance benchmarks (Week 6)
+- Performance benchmarks (Sprint 2 - Mid)
 
 **Work With:** @dev (implementation), @po (acceptance criteria)
 
@@ -150,52 +150,47 @@ The BMad orchestrator (@bmad-orchestrator) has analyzed the Tapin platform, revi
 
 **Key Deliverables:**
 
-- "Invisible AI" design principles (Week 1)
-- Recommendation section mockups (Week 3)
-- Urgent alert designs (Week 5)
-- User testing (Weeks 4, 8, 12)
+- "Invisible AI" design principles (Sprint 1 - Early)
+- Recommendation section mockups (Sprint 1 - Late)
+- Urgent alert designs (Sprint 2 - Early)
+- User testing (End of each sprint)
 
 **Work With:** @pm (priorities), @dev (API readiness)
 
 ---
 
-## 📅 Week 1 Schedule
+## 📅 Sprint 1, Iteration 1 - Task Priorities
 
-### Monday (Today - November 3)
+### Initial Sprint Planning
 
-- **10:00 AM:** Sprint planning meeting (all agents)
-- **2:00 PM:** Kickoff - agents start tasks
-- **EOD:** Daily standup post in #tapin-daily
+- Sprint planning coordination (all agents)
+- Agents review assigned tasks
+- Status updates via GitHub Issues
 
-### Tuesday (November 4)
+### Priority Tasks
 
-- **EOD:** @dev has Postgres + Render set up
-- **EOD:** Daily standup
+- **@dev:** Postgres + Render setup, Redis + Celery installation
+- **@analyst:** Vector DB research begins
+- **@architect:** Postgres migration strategy design
 
-### Wednesday (November 5)
+### Mid-Iteration Checkpoints
 
-- **11:00 AM:** @analyst + @architect sync (vector DB discussion)
-- **EOD:** @dev has Redis + Celery working
-- **EOD:** Daily standup
+- @analyst + @architect sync (vector DB discussion)
+- @dev progresses on infrastructure setup
+- Status updates via GitHub Project Board
 
-### Thursday (November 6)
+### Iteration Completion
 
-- **EOD:** @dev completes data migration
-- **EOD:** Daily standup
-
-### Friday (November 8)
-
-- **2:00 PM:** Week 1 review meeting
-  - @analyst presents vector DB recommendation
-  - @dev demos infrastructure
-  - @architect reviews architecture
-- **EOD:** Sprint 1 backlog finalized for Week 2
+- Vector DB recommendation ready
+- Infrastructure operational
+- Architecture documented
+- Sprint 1 backlog ready for iteration 2
 
 ---
 
-## 🎯 Week 1 Success Criteria
+## 🎯 Iteration 1 Success Criteria
 
-The week is successful if:
+The iteration is successful if:
 
 ✅ **Infrastructure Ready:**
 
@@ -226,9 +221,9 @@ The week is successful if:
 ### What We're Building (12 Weeks)
 
 ```
-Week 1-4:  Infrastructure + First AI Agent (geocoding)
-Week 5-8:  Semantic Search + Recommendations
-Week 9-12: Urgent Matching + Real-Time Alerts
+Iteration-4:  Infrastructure + First AI Agent (geocoding)
+Iteration-8:  Semantic Search + Recommendations
+Iteration-12: Urgent Matching + Real-Time Alerts
 ```
 
 ### Why This Matters
@@ -245,7 +240,7 @@ Week 9-12: Urgent Matching + Real-Time Alerts
 ### General Questions
 
 - Read: [EXEC-SUMMARY.md](EXEC-SUMMARY.md)
-- Ask: #tapin-questions Slack channel
+- Ask: GitHub Discussions
 
 ### Technical Blockers
 
@@ -305,20 +300,20 @@ AGENT TASKS:
 
 - [ ] Read EXEC-SUMMARY.md
 - [ ] Read your agent-specific task file
-- [ ] Join #tapin-daily Slack channel
+- [ ] Join GitHub Issues
 - [ ] Add sprint calendar invites
 - [ ] Review BMAD-ORCHESTRATION-PLAN.md
 
 **Daily:**
 
-- [ ] Post standup update by 10am PST
-- [ ] Check #tapin-daily for blockers
+- [ ] Post standup update as needed
+- [ ] Check GitHub Project Board for blockers
 - [ ] Update task status
 
 **Weekly:**
 
 - [ ] Attend sprint ceremonies (planning, review, retro)
-- [ ] Demo your work on Fridays
+- [ ] Demo your work upon completion
 - [ ] Prepare next week's tasks
 
 ---
@@ -331,7 +326,7 @@ Your work this week **unblocks everyone else**. If you finish early, amazing! If
 
 ### For Other Agents:
 
-Support @analyst and @dev this week. Your heavy lifting starts Week 2-3.
+Support @analyst and @dev this week. Your heavy lifting starts Iteration-3.
 
 ### For @sm:
 
@@ -353,14 +348,14 @@ Communicate the plan to stakeholders. Manage expectations. We're building someth
 - Auto-enriched listings (geocoding, quality scoring)
 - Foundation for $3M+ revenue in Year 3
 
-**Week 1 Goal:** Infrastructure ready, vector DB selected, agents created.
+**Iteration Goal:** Infrastructure ready, vector DB selected, agents created.
 
 **Let's do this!** 🚀
 
 ---
 
-**Questions?** Ask in #tapin-daily or tag @bmad-orchestrator
+**Questions?** Ask in GitHub Project Board or tag @bmad-orchestrator
 
 **Status:** Active  
 **Last Updated:** November 3, 2025  
-**Next Review:** November 8, 2025 (Friday 2pm)
+**Next Review:** Sprint 1, Iteration 1 Complete
