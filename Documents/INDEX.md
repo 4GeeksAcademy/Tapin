@@ -69,10 +69,14 @@ This strategy serves both community service needs and local economic growth whil
 
 ## 📖 Project Management
 
+### Strategy & Scope
+
+- **[PLATFORM-SCOPE.md](PLATFORM-SCOPE.md)** - ⭐ Platform scope & dual-purpose strategy
+- **[Project-Roadmap.md](Project-Roadmap.md)** - Development roadmap with updated user stories
+
 ### Planning
 
 - **[Project-Instructions.md](Project-Instructions.md)** - Project overview and instructions
-- **[Project-Roadmap.md](Project-Roadmap.md)** - Development roadmap
 
 ### Documentation
 
