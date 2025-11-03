@@ -7,6 +7,7 @@ import Filters from './components/Filters';
 import AuthForm from './components/AuthForm';
 import CreateListingForm from './components/CreateListingForm';
 import DashboardLanding from './pages/DashboardLanding';
+import MapView from './components/MapView';
 
 export default function App() {
   const [listings, setListings] = useState([]);
@@ -18,6 +19,7 @@ export default function App() {
   // Show the marketing-style landing page when there's no token (mobile-first)
   const [showLanding, setShowLanding] = useState(!token);
   const [user, setUser] = useState(null);
+  const [viewMode, setViewMode] = useState('list'); // 'list' or 'map'
 
   // Helper: fetch listings optionally filtered by q
   async function fetchListings(filter) {
@@ -140,6 +142,41 @@ export default function App() {
       </div>
 
       <main>
+        {/* View Mode Toggle */}
+        {!loading && !error && listings.length > 0 && (
+          <div style={{ marginBottom: '20px', textAlign: 'center' }}>
+            <button
+              onClick={() => setViewMode('list')}
+              style={{
+                padding: '8px 16px',
+                background: viewMode === 'list' ? '#007bff' : '#fff',
+                color: viewMode === 'list' ? '#fff' : '#333',
+                border: '1px solid #007bff',
+                borderRadius: '4px 0 0 4px',
+                cursor: 'pointer',
+                fontWeight: viewMode === 'list' ? 'bold' : 'normal',
+              }}
+            >
+              📋 List
+            </button>
+            <button
+              onClick={() => setViewMode('map')}
+              style={{
+                padding: '8px 16px',
+                background: viewMode === 'map' ? '#007bff' : '#fff',
+                color: viewMode === 'map' ? '#fff' : '#333',
+                border: '1px solid #007bff',
+                borderLeft: 'none',
+                borderRadius: '0 4px 4px 0',
+                cursor: 'pointer',
+                fontWeight: viewMode === 'map' ? 'bold' : 'normal',
+              }}
+            >
+              🗺️ Map
+            </button>
+          </div>
+        )}
+
         {loading && <SkeletonList count={3} />}
         {error && <p className="error">Error: {error}</p>}
 
@@ -147,7 +184,7 @@ export default function App() {
           <section>
             {listings.length === 0 ? (
               <EmptyState />
-            ) : (
+            ) : viewMode === 'list' ? (
               <ul className="listings">
                 {listings.map((l) => (
                   <li key={l.id} className="listing-item">
@@ -155,6 +192,8 @@ export default function App() {
                   </li>
                 ))}
               </ul>
+            ) : (
+              <MapView listings={listings} onListingClick={handleSelect} />
             )}
           </section>
         )}

@@ -1,4 +1,3 @@
-
 @dev (Full Stack Developer)
 
 # Prompt for @dev (Authentication Implementation)

@@ -87,6 +87,8 @@ class Listing(db.Model):
     title = db.Column(db.String(200), nullable=False)
     description = db.Column(db.Text)
     location = db.Column(db.String(200))
+    latitude = db.Column(db.Float, nullable=True)
+    longitude = db.Column(db.Float, nullable=True)
     owner_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
@@ -96,6 +98,8 @@ class Listing(db.Model):
             "title": self.title,
             "description": self.description,
             "location": self.location,
+            "latitude": self.latitude,
+            "longitude": self.longitude,
             "owner_id": self.owner_id,
             "created_at": self.created_at.isoformat() if self.created_at else None,
         }

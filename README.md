@@ -1,28 +1,230 @@
 # Tapin
 
-Lightweight prototype for Tapin — a marketplace-style demo integrated with the BMad Method agent framework.
+**A community volunteer marketplace platform built with Flask + React**
+
+Tapin is a full-stack web application that connects volunteers with community service opportunities. Built as a school project demonstrating modern web development practices using the BMad Method agent framework.
+
+---
+
+## 🚀 Live Demo
+
+- **Local Demo:** [See Local Demo Guide](Documents/Local-Demo-Guide.md)
+- **Deployment:** [See Render Deployment Guide](Documents/Story-3.2-Render-Deployment.md) (FREE tier)
+
+---
+
+## ✨ Features
+
+### Sprint 1 - Core Features ✅
+
+- ✅ User authentication (register, login, JWT tokens)
+- ✅ Password reset via email
+- ✅ Listing CRUD operations (Create, Read, Update, Delete)
+- ✅ Volunteer sign-up system
+- ✅ Reviews and ratings (1-5 stars)
+- ✅ Ownership verification (edit/delete only your listings)
+
+### Sprint 2 - Testing & Quality ✅
+
+- ✅ Backend test suite (32+ test cases with pytest)
+- ✅ Frontend test framework (Vitest + React Testing Library)
+- ✅ Component tests (ReviewForm with 10 test cases)
+- ✅ Code linting (ESLint configured)
+
+### Sprint 3 - Map Integration ✅
+
+- ✅ Interactive map view with Leaflet + OpenStreetMap (FREE, no API keys)
+- ✅ List/Map toggle view
+- ✅ Markers with popups showing listing details
+- ✅ Optional coordinate input for listings
+- ✅ Auto-fit map bounds to show all markers
+
+---
+
+## 🛠 Tech Stack
+
+**Backend:**
+
+- Flask 2.2+ (Python web framework)
+- SQLAlchemy 3.0 (ORM)
+- Flask-JWT-Extended 4.4 (Authentication)
+- SQLite (Development) / PostgreSQL (Production)
+- pytest (Testing)
+
+**Frontend:**
+
+- React 18.2 (UI library)
+- Vite 5.0 (Build tool)
+- Leaflet 1.9.4 + react-leaflet 4.2.1 (Maps)
+- Vitest + React Testing Library (Testing)
+
+**Deployment:**
+
+- Render (FREE tier - recommended)
+- Local demo + screen recording (for submissions)
+
+---
+
+## 📋 Prerequisites
+
+- Python 3.9+
+- Node.js 18+
+- Git
+
+---
+
+## 🚀 Quick Start
+
+### Option 1: Local Demo (Recommended for School Projects)
+
+```bash
+# 1. Clone repository
+git clone https://github.com/4GeeksAcademy/Tapin.git
+cd Tapin
+
+# 2. Backend setup
+cd backend
+python3 -m venv .venv
+source .venv/bin/activate  # macOS/Linux
+pip install -r requirements.txt
+python -c "from app import app, db; app.app_context().push(); db.create_all()"
+python app.py
+
+# 3. Frontend setup (new terminal)
+cd frontend
+npm install
+npm run dev
+
+# 4. Open http://localhost:5173
+```
+
+**� Complete guide:** [Local-Demo-Guide.md](Documents/Local-Demo-Guide.md)
+
+### Option 2: Deploy to Render (FREE)
+
+For a live demo URL to share:
+
+**📖 Step-by-step guide:** [Story-3.2-Render-Deployment.md](Documents/Story-3.2-Render-Deployment.md)
+
+---
+
+## 📚 Documentation
+
+### Project Documentation
+
+- **[Local Demo Guide](Documents/Local-Demo-Guide.md)** - Run locally + screen recording tips
+- **[Render Deployment Guide](Documents/Story-3.2-Render-Deployment.md)** - Deploy to FREE hosting
+- **[API Documentation](backend/API_DOCS.md)** - Backend API endpoints
+- **[Sprint 3 Architecture](Documents/Sprint-3-Architecture-Design.md)** - Architecture decisions
+
+### Sprint Reports
+
+- **[Sprint 1 Completion](Documents/Sprint-1-Completion-Report.md)** - Core features completed
+- **[Sprint 2 QA Report](Documents/Sprint-2-QA-Report.md)** - Testing framework setup
+- **[Story 3.1 Map Testing](Documents/Story-3.1-Map-Testing.md)** - Map integration tests
+
+### Setup Guides
+
+- **[Backend README](backend/README.md)** - Backend setup and configuration
+- **[Frontend README](frontend/README.md)** - Frontend setup and build
+- **[Backend Config Guide](backend/CONFIG.md)** - Environment variables
+
+---
+
+## 🧪 Running Tests
+
+### Backend Tests (32+ test cases)
+
+```bash
+cd backend
+source .venv/bin/activate
+pytest
+pytest --cov=. --cov-report=html  # With coverage
+```
+
+### Frontend Tests
+
+```bash
+cd frontend
+npm test                  # Run tests
+npm run test:ui          # Interactive UI
+npm run test:coverage    # With coverage
+```
+
+---
+
+## 🗂 Project Structure
+
+```
+Tapin/
+├── backend/              # Flask API
+│   ├── app.py           # Main application
+│   ├── auth.py          # JWT authentication
+│   ├── requirements.txt # Python dependencies
+│   ├── tests/           # Backend test suite
+│   └── data.db          # SQLite database (dev)
+├── frontend/            # React app
+│   ├── src/
+│   │   ├── components/  # React components
+│   │   ├── test/        # Frontend tests
+│   │   └── App.jsx      # Main app component
+│   ├── package.json
+│   └── vite.config.js
+├── Documents/           # Project documentation
+│   ├── Local-Demo-Guide.md
+│   ├── Story-3.2-Render-Deployment.md
+│   └── Sprint-*.md
+└── bmad-core/          # BMad agent framework
+```
+
+---
+
+## 🎯 Development Workflow
+
+This project was built using the **BMad Method** - an AI-assisted agile development framework:
+
+1. **Planning Phase** - @analyst, @pm, @architect created requirements and design
+2. **Development Phase** - @dev implemented features with @sm guidance
+3. **QA Phase** - @qa created test suites and verified quality
+4. **Documentation Phase** - Comprehensive guides created throughout
+
+**Learn more about BMad Method below** ⬇️
+
+---
+
+## 🤝 Contributing
+
+This is a school project, but contributions are welcome:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit changes (`git commit -m 'Add amazing feature'`)
+4. Push to branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+---
+
+## 📄 License
+
+MIT License - see [LICENSE](LICENSE) for details.
+
+---
+
+## 🙏 Acknowledgments
+
+- Built using the [BMad Method](https://github.com/bmadcode/bmad-method) AI agent framework
+- Maps powered by [Leaflet](https://leafletjs.com/) + [OpenStreetMap](https://www.openstreetmap.org/)
+- Testing with [pytest](https://pytest.org/) and [Vitest](https://vitest.dev/)
+
+---
+
+# 🤖 Built with BMad Method™
 
 This repository contains:
 
 - `backend/` — Flask API (SQLite dev database)
 - `frontend/` — React + Vite frontend
 - `bmad-core/` — BMad agent files (installed via the BMad installer)
-
-## Getting Started
-
-**📚 [See QUICKSTART.md](QUICKSTART.md) for step-by-step instructions to run both frontend and backend.**
-
-Quick reference:
-
-- Backend setup: see [`backend/README.md`](backend/README.md)
-- Frontend setup: see [`frontend/README.md`](frontend/README.md)
-- API documentation: see [`backend/API_DOCS.md`](backend/API_DOCS.md)
-
-## Recommended Next Steps
-
-- Review `bmad-core/core-config.yaml` and copy or create `docs/prd.md` and `docs/architecture.md` as the canonical planning artifacts
-- Decide which installer-created artifacts you want tracked (e.g., commit `bmad-core/` vs ignore it)
-- Use `.gitignore` to keep local-only files out of commits
 
 ---
 

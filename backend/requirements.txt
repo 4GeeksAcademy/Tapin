@@ -12,6 +12,7 @@ Flask-Cors>=3.0
 # Database and migrations
 SQLAlchemy>=1.4
 alembic>=1.11
+psycopg2-binary>=2.9  # PostgreSQL adapter for production
 
 # Security and utilities
 itsdangerous>=2.1
@@ -28,4 +29,7 @@ pytest>=7.0
 # - smtplib and email are part of the Python standard library
 # - For production, consider adding 'bcrypt' or 'passlib[bcrypt]' for password hashing
 # - For production deployment, add: gunicorn>=20.1 or waitress>=2.1
+
+# Production server
+gunicorn>=20.1  # WSGI HTTP server for production
 
