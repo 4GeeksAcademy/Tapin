@@ -51,6 +51,11 @@
 
 ## 🏗️ Architecture & Design
 
+### System Architecture
+
+- **[ARCHITECTURE-VISUAL.md](ARCHITECTURE-VISUAL.md)** - ⭐ **Visual diagrams of entire system (Phase 1-5)**
+- **[Sprint-3-Architecture-Design.md](Sprint-3-Architecture-Design.md)** - Map integration & deployment strategy
+
 ### Sprint Documentation
 
 - **[Sprint-1-Completion-Report.md](Sprint-1-Completion-Report.md)** - Core features (auth, listings, reviews)
