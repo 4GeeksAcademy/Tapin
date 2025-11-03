@@ -1,4 +1,4 @@
-from backend.auth import token_for, refresh_for
+from auth import token_for, refresh_for
 
 
 def test_refresh_token_cycle(client, create_user):

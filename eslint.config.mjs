@@ -44,16 +44,16 @@ export default [
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
-      'react/prop-types': 'off', // Disable prop-types if using TypeScript or prefer runtime checks
-      'unicorn/filename-case': 'off', // Allow PascalCase for React components
+      'react/prop-types': 'off',
+      'unicorn/filename-case': 'off',
       'no-unused-vars': [
         'error',
         {
-          varsIgnorePattern: '^React$|^_|^[A-Z]', // Allow unused React, _ prefix, and PascalCase (components)
+          varsIgnorePattern: '^React$|^_|^[A-Z]',
           argsIgnorePattern: '^_',
         },
       ],
-      'react-hooks/purity': 'off', // Allow Date.now and other impure calls in components
+      'react-hooks/purity': 'off',
     },
     settings: {
       react: {
@@ -61,8 +61,8 @@ export default [
       },
     },
     languageOptions: {
+      sourceType: 'module',
       globals: {
-        // Browser globals
         window: 'readonly',
         document: 'readonly',
         localStorage: 'readonly',
@@ -79,8 +79,6 @@ export default [
       },
     },
   },
-
-  // Project-specific tweaks
   {
     rules: {
       // Allow console for CLI tools in this repo

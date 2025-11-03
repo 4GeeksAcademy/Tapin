@@ -4,7 +4,7 @@ import ListingCard from './components/ListingCard';
 import EmptyState from './components/EmptyState';
 import ListingDetail from './components/ListingDetail';
 import Filters from './components/Filters';
-import LoginForm from './components/LoginForm';
+import AuthForm from './components/AuthForm';
 import CreateListingForm from './components/CreateListingForm';
 import DashboardLanding from './pages/DashboardLanding';
 
@@ -44,7 +44,6 @@ export default function App() {
     const q = params.get('q') || 'All';
     setActiveFilter(q);
     fetchListings(q);
-     
   }, []);
 
   useEffect(() => {
@@ -130,22 +129,12 @@ export default function App() {
               </button>
             </div>
           ) : (
-            <div style={{ display: 'flex', gap: 8 }}>
-              <LoginForm
-                mode="login"
-                onLogin={(d) => {
-                  localStorage.setItem('access_token', d.access_token);
-                  setToken(d.access_token);
-                }}
-              />
-              <LoginForm
-                mode="register"
-                onLogin={(d) => {
-                  localStorage.setItem('access_token', d.access_token);
-                  setToken(d.access_token);
-                }}
-              />
-            </div>
+            <AuthForm
+              onLogin={(d) => {
+                localStorage.setItem('access_token', d.access_token);
+                setToken(d.access_token);
+              }}
+            />
           )}
         </div>
       </div>

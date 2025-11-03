@@ -1,5 +1,5 @@
-from backend.auth import token_for
-from backend.app import app
+from auth import token_for
+from app import app
 
 
 def test_get_items_empty(client):

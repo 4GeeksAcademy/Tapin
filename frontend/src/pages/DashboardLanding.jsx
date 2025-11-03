@@ -1,11 +1,11 @@
 import React from 'react';
-import logo from '../../../Design-Assets/Tapin-Logo.png';
+import logoTransparent from '../../../Design-Assets/brand/logo-transparent.svg';
 
 export default function DashboardLanding({ onEnter }) {
   return (
     <div className="landing-root">
       <div className="landing-hero">
-        <img src={logo} alt="Tapin logo" className="landing-logo" />
+        <img src={logoTransparent} alt="Tapin logo" className="landing-logo" />
         <h1 className="landing-title">Tapin — discover local talent, fast.</h1>
         <p className="landing-sub">
           A lightweight mobile-first marketplace to find and book local makers, tutors and
