@@ -5,15 +5,26 @@ Lightweight prototype for Tapin — a marketplace-style demo integrated with the
 This repository contains:
 
 - `backend/` — Flask API (SQLite dev database)
-- `frontend/` — React placeholders and map demo
-- `.bmad-core/` — BMad agent files (installed via the BMad installer)
+- `frontend/` — React + Vite frontend
+- `bmad-core/` — BMad agent files (installed via the BMad installer)
 
-Quick start (backend): see `backend/README.md`.
+## Getting Started
 
-Recommended next steps:
+**📚 [See QUICKSTART.md](QUICKSTART.md) for step-by-step instructions to run both frontend and backend.**
 
-- Review `.bmad-core/core-config.yaml` and copy or create `docs/prd.md` and `docs/architecture.md` as the canonical planning artifacts.
-- Decide which installer-created artifacts you want tracked (e.g., commit `.bmad-core/` vs ignore it). Use `.gitignore` to keep local-only files out of commits.
+Quick reference:
+
+- Backend setup: see [`backend/README.md`](backend/README.md)
+- Frontend setup: see [`frontend/README.md`](frontend/README.md)
+- API documentation: see [`backend/API_DOCS.md`](backend/API_DOCS.md)
+
+## Recommended Next Steps
+
+- Review `bmad-core/core-config.yaml` and copy or create `docs/prd.md` and `docs/architecture.md` as the canonical planning artifacts
+- Decide which installer-created artifacts you want tracked (e.g., commit `bmad-core/` vs ignore it)
+- Use `.gitignore` to keep local-only files out of commits
+
+---
 
 # BMAD-METHOD™: Universal AI Agent Framework
 

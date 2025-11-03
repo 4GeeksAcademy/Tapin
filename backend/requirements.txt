@@ -1,26 +1,31 @@
-Flask>=2.0
-pytest>=7.0
-Flask-SQLAlchemy>=3.0
-Flask-JWT-Extended>=4.0
-Flask-Cors>=3.0
-SQLAlchemy>=1.4
-alembic>=1.11
 # Requirements for Tapin backend (Flask app)
-# Created: 2025-10-30
-# The app (backend/app.py) uses Flask, SQLAlchemy, JWT, CORS, and email utilities.
-# Install into a virtualenv with: python -m venv .venv && source .venv/bin/activate
-# then: pip install -r requirements.txt
+# Install into a virtualenv with:
+#   python -m venv .venv && source .venv/bin/activate
+#   pip install -r requirements.txt
 
+# Core Flask and extensions
 Flask>=2.2,<3
 Flask-SQLAlchemy>=3.0
 Flask-JWT-Extended>=4.4
 Flask-Cors>=3.0
+
+# Database and migrations
 SQLAlchemy>=1.4
+alembic>=1.11
+
+# Security and utilities
 itsdangerous>=2.1
 Werkzeug>=2.2
 python-dotenv>=0.21
+
+# CLI utilities
 click>=8.0
 
+# Testing
+pytest>=7.0
+
 # Notes:
-# - smtplib and email are part of the Python standard library; no pip package required.
-# - For production password hashing, consider adding 'bcrypt' or 'passlib[bcrypt]'.
+# - smtplib and email are part of the Python standard library
+# - For production, consider adding 'bcrypt' or 'passlib[bcrypt]' for password hashing
+# - For production deployment, add: gunicorn>=20.1 or waitress>=2.1
+

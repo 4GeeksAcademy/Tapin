@@ -111,6 +111,52 @@ class Item(db.Model):
         return {"id": self.id, "name": self.name, "description": self.description}
 
 
+class SignUp(db.Model):
+    """Track volunteer sign-ups for listings."""
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    listing_id = db.Column(db.Integer, db.ForeignKey('listing.id'), nullable=False)
+    status = db.Column(db.String(50), default='pending')  # pending, accepted, declined, cancelled
+    message = db.Column(db.Text)  # Optional message from volunteer
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    
+    # Add unique constraint to prevent duplicate sign-ups
+    __table_args__ = (db.UniqueConstraint('user_id', 'listing_id', name='_user_listing_uc'),)
+    
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "user_id": self.user_id,
+            "listing_id": self.listing_id,
+            "status": self.status,
+            "message": self.message,
+            "created_at": self.created_at.isoformat() if self.created_at else None,
+        }
+
+
+class Review(db.Model):
+    """User reviews for listings."""
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    listing_id = db.Column(db.Integer, db.ForeignKey('listing.id'), nullable=False)
+    rating = db.Column(db.Integer, nullable=False)  # 1-5 stars
+    comment = db.Column(db.Text)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    
+    # Add unique constraint to prevent multiple reviews from same user
+    __table_args__ = (db.UniqueConstraint('user_id', 'listing_id', name='_user_listing_review_uc'),)
+    
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "user_id": self.user_id,
+            "listing_id": self.listing_id,
+            "rating": self.rating,
+            "comment": self.comment,
+            "created_at": self.created_at.isoformat() if self.created_at else None,
+        }
+
+
 def get_serializer():
     return URLSafeTimedSerializer(app.config['SECRET_KEY'])
 
@@ -336,6 +382,10 @@ def get_listing_detail(id):
 @jwt_required()
 def update_listing(id):
     listing = Listing.query.get_or_404(id)
+    # Verify ownership
+    owner_id = int(get_jwt_identity())
+    if listing.owner_id != owner_id:
+        return jsonify({"error": "unauthorized - you don't own this listing"}), 403
     data = request.get_json() or {}
     listing.title = data.get('title', listing.title)
     listing.description = data.get('description', listing.description)
@@ -348,9 +398,159 @@ def update_listing(id):
 @jwt_required()
 def delete_listing(id):
     listing = Listing.query.get_or_404(id)
+    # Verify ownership
+    owner_id = int(get_jwt_identity())
+    if listing.owner_id != owner_id:
+        return jsonify({"error": "unauthorized - you don't own this listing"}), 403
     db.session.delete(listing)
     db.session.commit()
     return jsonify({"message": "deleted"})
+
+
+@app.route('/listings/<int:id>/signup', methods=['POST'])
+@jwt_required()
+def signup_for_listing(id):
+    """Volunteer signs up for a listing."""
+    listing = Listing.query.get_or_404(id)
+    user_id = int(get_jwt_identity())
+    
+    # Check if already signed up
+    existing = SignUp.query.filter_by(user_id=user_id, listing_id=id).first()
+    if existing:
+        return jsonify({"error": "already signed up for this listing"}), 400
+    
+    data = request.get_json() or {}
+    signup = SignUp(
+        user_id=user_id,
+        listing_id=id,
+        message=data.get('message'),
+        status='pending'
+    )
+    db.session.add(signup)
+    db.session.commit()
+    
+    return jsonify(signup.to_dict()), 201
+
+
+@app.route('/listings/<int:id>/signups', methods=['GET'])
+@jwt_required()
+def get_listing_signups(id):
+    """Get all sign-ups for a listing (owner only)."""
+    listing = Listing.query.get_or_404(id)
+    owner_id = int(get_jwt_identity())
+    
+    # Verify ownership
+    if listing.owner_id != owner_id:
+        return jsonify({"error": "unauthorized - you don't own this listing"}), 403
+    
+    signups = SignUp.query.filter_by(listing_id=id).order_by(SignUp.created_at.desc()).all()
+    
+    # Include user email with each sign-up
+    results = []
+    for signup in signups:
+        signup_dict = signup.to_dict()
+        user = db.session.get(User, signup.user_id)
+        if user:
+            signup_dict['user_email'] = user.email
+        results.append(signup_dict)
+    
+    return jsonify(results)
+
+
+@app.route('/signups/<int:id>', methods=['PUT'])
+@jwt_required()
+def update_signup_status(id):
+    """Update sign-up status (owner can accept/decline, volunteer can cancel)."""
+    signup = SignUp.query.get_or_404(id)
+    user_id = int(get_jwt_identity())
+    data = request.get_json() or {}
+    new_status = data.get('status')
+    
+    if not new_status:
+        return jsonify({"error": "status required"}), 400
+    
+    # Get the listing to check ownership
+    listing = db.session.get(Listing, signup.listing_id)
+    if not listing:
+        return jsonify({"error": "listing not found"}), 404
+    
+    # Owner can accept/decline, volunteer can cancel
+    if listing.owner_id == user_id:
+        if new_status not in ['accepted', 'declined']:
+            return jsonify({"error": "owner can only set status to accepted or declined"}), 400
+    elif signup.user_id == user_id:
+        if new_status != 'cancelled':
+            return jsonify({"error": "volunteer can only cancel sign-up"}), 400
+    else:
+        return jsonify({"error": "unauthorized"}), 403
+    
+    signup.status = new_status
+    db.session.commit()
+    return jsonify(signup.to_dict())
+
+
+@app.route('/listings/<int:id>/reviews', methods=['POST'])
+@jwt_required()
+def create_review(id):
+    """Create a review for a listing."""
+    listing = Listing.query.get_or_404(id)
+    user_id = int(get_jwt_identity())
+    
+    # Check if already reviewed
+    existing = Review.query.filter_by(user_id=user_id, listing_id=id).first()
+    if existing:
+        return jsonify({"error": "you have already reviewed this listing"}), 400
+    
+    data = request.get_json() or {}
+    rating = data.get('rating')
+    
+    if not rating or not isinstance(rating, int) or rating < 1 or rating > 5:
+        return jsonify({"error": "rating must be an integer between 1 and 5"}), 400
+    
+    review = Review(
+        user_id=user_id,
+        listing_id=id,
+        rating=rating,
+        comment=data.get('comment')
+    )
+    db.session.add(review)
+    db.session.commit()
+    
+    return jsonify(review.to_dict()), 201
+
+
+@app.route('/listings/<int:id>/reviews', methods=['GET'])
+def get_listing_reviews(id):
+    """Get all reviews for a listing."""
+    listing = Listing.query.get_or_404(id)
+    reviews = Review.query.filter_by(listing_id=id).order_by(Review.created_at.desc()).all()
+    
+    # Include user email with each review
+    results = []
+    for review in reviews:
+        review_dict = review.to_dict()
+        user = db.session.get(User, review.user_id)
+        if user:
+            review_dict['user_email'] = user.email
+        results.append(review_dict)
+    
+    return jsonify(results)
+
+
+@app.route('/listings/<int:id>/average-rating', methods=['GET'])
+def get_listing_average_rating(id):
+    """Get average rating for a listing."""
+    listing = Listing.query.get_or_404(id)
+    reviews = Review.query.filter_by(listing_id=id).all()
+    
+    if not reviews:
+        return jsonify({"average_rating": 0, "review_count": 0})
+    
+    avg_rating = sum(r.rating for r in reviews) / len(reviews)
+    return jsonify({
+        "average_rating": round(avg_rating, 1),
+        "review_count": len(reviews)
+    })
 
 
 if __name__ == '__main__':

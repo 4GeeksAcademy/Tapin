@@ -172,7 +172,14 @@ export default function App() {
         )}
       </main>
 
-      {selected && <ListingDetail listing={selected} onClose={() => setSelected(null)} />}
+      {selected && (
+        <ListingDetail
+          listing={selected}
+          onClose={() => setSelected(null)}
+          token={token}
+          user={user}
+        />
+      )}
 
       <footer>
         <small>Tapin prototype</small>

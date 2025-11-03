@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ForgotPassword from './ForgotPassword';
 
 export default function AuthForm({ onLogin }) {
   const [mode, setMode] = useState('login'); // 'login' or 'register'
@@ -7,6 +8,7 @@ export default function AuthForm({ onLogin }) {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [showForgotPassword, setShowForgotPassword] = useState(false);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -42,60 +44,86 @@ export default function AuthForm({ onLogin }) {
   }
 
   return (
-    <div className="auth-form">
-      <div className="auth-tabs">
-        <button
-          type="button"
-          className={`auth-tab ${mode === 'login' ? 'active' : ''}`}
-          onClick={() => setMode('login')}
-        >
-          Login
-        </button>
-        <button
-          type="button"
-          className={`auth-tab ${mode === 'register' ? 'active' : ''}`}
-          onClick={() => setMode('register')}
-        >
-          Register
-        </button>
-      </div>
+    <>
+      <div className="auth-form">
+        <div className="auth-tabs">
+          <button
+            type="button"
+            className={`auth-tab ${mode === 'login' ? 'active' : ''}`}
+            onClick={() => setMode('login')}
+          >
+            Login
+          </button>
+          <button
+            type="button"
+            className={`auth-tab ${mode === 'register' ? 'active' : ''}`}
+            onClick={() => setMode('register')}
+          >
+            Register
+          </button>
+        </div>
 
-      <form onSubmit={handleSubmit} className="form-group">
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-          className="form-input"
-        />
-
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-          className="form-input"
-        />
-
-        {mode === 'register' && (
+        <form onSubmit={handleSubmit} className="form-group">
           <input
-            type="password"
-            placeholder="Confirm Password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
             className="form-input"
           />
-        )}
 
-        {error && <p className="error">{error}</p>}
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+            className="form-input"
+          />
 
-        <button type="submit" className="btn btn-primary" disabled={loading}>
-          {loading ? '...' : mode === 'login' ? 'Login' : 'Register'}
-        </button>
-      </form>
-    </div>
+          {mode === 'register' && (
+            <input
+              type="password"
+              placeholder="Confirm Password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              required
+              className="form-input"
+            />
+          )}
+
+          {error && <p className="error">{error}</p>}
+
+          <button type="submit" className="btn btn-primary" disabled={loading}>
+            {loading ? '...' : mode === 'login' ? 'Login' : 'Register'}
+          </button>
+
+          {mode === 'login' && (
+            <button
+              type="button"
+              onClick={() => setShowForgotPassword(true)}
+              style={{
+                background: 'none',
+                border: 'none',
+                color: '#0066cc',
+                fontSize: '0.85rem',
+                cursor: 'pointer',
+                marginTop: '8px',
+              }}
+            >
+              Forgot Password?
+            </button>
+          )}
+        </form>
+      </div>
+
+      {showForgotPassword && (
+        <ForgotPassword
+          onClose={() => setShowForgotPassword(false)}
+          onSuccess={() => setShowForgotPassword(false)}
+        />
+      )}
+    </>
   );
 }

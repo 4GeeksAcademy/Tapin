@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function LoginForm({ onLogin, mode = 'login' }) {
+export default function LoginForm({ onLogin, onForgotPassword, mode = 'login' }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
@@ -43,6 +43,16 @@ export default function LoginForm({ onLogin, mode = 'login' }) {
       <button type="submit" className="chip">
         {mode === 'login' ? 'Login' : 'Register'}
       </button>
+      {mode === 'login' && onForgotPassword && (
+        <button
+          type="button"
+          className="link-button"
+          onClick={onForgotPassword}
+          style={{ fontSize: '0.85rem', marginTop: '4px' }}
+        >
+          Forgot Password?
+        </button>
+      )}
       {error && <div className="error">{error}</div>}
     </form>
   );

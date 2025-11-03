@@ -1,17 +1,16 @@
-# Requirements for Tapin backend (Flask app)
-# Created: 2025-10-30
-# The app (backend/app.py) uses Flask, SQLAlchemy, JWT, CORS, and email utilities.
-# Install into a virtualenv with: python -m venv .venv && source .venv/bin/activate
-# then: pip install -r requirements.txt
+# Root-level requirements for Tapin project
+# This file is for repository-level tooling and scripts
+# For backend dependencies, see: backend/requirements.txt
+# For frontend dependencies, see: frontend/package.json
 
-Flask>=2.2,<3
-Flask-SQLAlchemy>=3.0
-Flask-JWT-Extended>=4.4
-Flask-Cors>=3.0
-SQLAlchemy>=1.4
-itsdangerous>=2.1
-Werkzeug>=2.2
+# Project tooling
+python-dotenv>=0.21
 
-# Notes:
-# - smtplib and email are part of the Python standard library; no pip package required.
-# - For production password hashing, consider adding 'bcrypt' or 'passlib[bcrypt]'.
+# Development tools (optional)
+# black>=23.0  # Code formatter
+# flake8>=6.0  # Linter
+# isort>=5.12  # Import sorter
+
+# Note: Install backend dependencies with:
+#   cd backend && pip install -r requirements.txt
+

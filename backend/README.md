@@ -1,102 +1,124 @@
-# Backend MVP (minimal)
+# Tapin Backend (Flask API)
 
-Prereqs: Python 3.10+ recommended.
+This folder contains the Flask API for the Tapin marketplace platform.
 
-Create venv, install deps, run app (PowerShell):
+## Two Application Versions
 
-```powershell
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-pip install -r backend/requirements.txt
-python backend/mvp_app.py
-```
+- **`app.py`** - Full production application with authentication, JWT, database, listings, and all features
+- **`mvp_app.py`** - Minimal MVP version with basic health check and in-memory items (for testing)
 
-Open http://127.0.0.1:5000/api/health
-Open http://127.0.0.1:5000/api/items
+**Use `app.py` for development and production.**
 
-Run tests:
-
-```powershell
-.\.venv\Scripts\Activate.ps1
-pip install -r backend/requirements.txt
-pytest backend/tests -q
-```
-
-Database migrations (Alembic)
-
-Initialize and run migrations (from repository root):
-
-```powershell
-# install alembic into your venv first (if not already):
-.\.venv\Scripts\python.exe -m pip install alembic
-
-# create the alembic version table and run the included initial migration
-alembic -c alembic.ini upgrade head
-
-# To autogenerate future migrations:
-alembic -c alembic.ini revision --autogenerate -m "add changes"
-alembic -c alembic.ini upgrade head
-```
-
-# Backend (Flask)
-
-This folder contains a small Flask API used for prototyping the Tapin backend.
-
-Prerequisites
+## Prerequisites
 
 - Python 3.10+ recommended
-- (Optional) virtualenv or venv
+- virtualenv or venv
 
-Quick start (zsh)
+## Quick Start
+
+**From the backend directory:**
 
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
-pip install -r backend/requirements.txt
-python backend/app.py
+pip install -r requirements.txt
+python manage.py upgrade  # Run database migrations
+python seed_sample_data.py  # (Optional) Add sample data
+python app.py
 ```
 
-Environment variables
+The API will be available at http://127.0.0.1:5000
 
-- `SECRET_KEY` — Flask secret (defaults to a dev value)
-- `JWT_SECRET_KEY` — JWT secret (defaults to SECRET_KEY)
-- `SECURITY_PASSWORD_SALT` — salt used for password reset tokens
-- `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, `SMTP_USE_TLS` — if you want the app to send real reset emails
- - Recommended: copy `.env.sample` to `.env` for local development. The `backend` app will pick up env vars from the process environment.
- - Added refresh token support: register/login now return both `access_token` and `refresh_token`. Use POST `/refresh` with a refresh token in the Authorization header to obtain a new access token.
- - The app will automatically load a `.env` file from the repository root if `python-dotenv` is installed. Copy `.env.sample` to `.env` and edit values for local development.
+### Test Endpoints
 
-Manage migrations locally
+- Health check: http://127.0.0.1:5000/api/health
+- Listings: http://127.0.0.1:5000/listings
+- Items: http://127.0.0.1:5000/api/items
 
-To run migrations from your virtualenv without calling alembic directly, use the included wrapper:
+## Environment Variables
 
-```powershell
-.\.venv\Scripts\Activate.ps1
-python backend/manage.py upgrade
+For local development, create a `.env` file in the repository root:
+
+```env
+SECRET_KEY=your-secret-key-here
+JWT_SECRET_KEY=your-jwt-secret-here
+SECURITY_PASSWORD_SALT=your-password-salt-here
+SQLALCHEMY_DATABASE_URI=sqlite:///backend/data.db
+
+# Optional: Email configuration for password resets
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=your-email@gmail.com
+SMTP_PASS=your-app-password
+SMTP_USE_TLS=true
 ```
 
-This executes `alembic -c alembic.ini upgrade head` using the active Python interpreter so it works reliably inside your venv.
+See `CONFIG.md` for detailed configuration options and CI/CD setup.
 
-Configuration & secrets
+## Database Management
 
-See `backend/CONFIG.md` for a list of environment variables used by the backend, recommended local defaults, and CI secret guidance. This document shows example GitHub Actions snippets for injecting secrets into workflows.
+### Running Migrations
 
-Database
+Use the included manage.py wrapper to run migrations:
 
-- By default the app uses SQLite at `backend/data.db` (created automatically).
+```bash
+source .venv/bin/activate
+python manage.py upgrade
+```
 
-Smoke tests
+### Creating New Migrations
 
-- Register: POST /register {email, password}
-- Login: POST /login {email, password}
-- Get listings: GET /listings
-- Create listing (requires JWT): POST /listings with Authorization: Bearer <token>
+When you modify database models:
 
-Notes
+```bash
+alembic -c alembic.ini revision --autogenerate -m "description of changes"
+python manage.py upgrade
+```
 
-- This is a development prototype. For production, switch to a proper RDBMS, secure secrets, and use stronger password hashing (bcrypt/passlib).
+## Running Tests
 
-# Tapin Backend
+```bash
+source .venv/bin/activate
+pytest tests/ -v
+```
+
+## API Endpoints
+
+### Public Endpoints
+
+- `GET /api/health` - Health check
+- `GET /api/items` - List items
+- `POST /register` - Register new user
+- `POST /login` - Login and get JWT tokens
+- `POST /reset-password` - Request password reset
+- `GET /listings` - Get all listings (supports ?q=search&location=filter)
+- `GET /listings/<id>` - Get listing details
+
+### Protected Endpoints (require JWT)
+
+- `POST /api/items` - Create new item
+- `POST /listings` - Create new listing
+- `PUT /listings/<id>` - Update listing
+- `DELETE /listings/<id>` - Delete listing
+- `GET /me` - Get current user info
+- `POST /refresh` - Refresh access token (requires refresh token)
+
+See `API_DOCS.md` for complete API documentation.
+
+## Database
+
+- Development uses SQLite at `backend/data.db` (created automatically)
+- For production, set `SQLALCHEMY_DATABASE_URI` to a PostgreSQL or MySQL connection string
+
+## Notes
+
+- This is a development prototype
+- For production deployment:
+  - Use a production RDBMS (PostgreSQL, MySQL)
+  - Set strong secret keys via environment variables
+  - Enable HTTPS
+  - Configure proper CORS settings
+  - Use production WSGI server (gunicorn, waitress)
 
 This directory will contain the Flask backend for the Tapin project.
 
