@@ -115,12 +115,12 @@ Transform Tapin from basic MVP into AI-powered hyperlocal matching platform by i
 
 **Deliverables:**
 
-- [ ] Postgres migration plan with rollback strategy (Week 1)
-- [ ] Redis + Celery architecture design (Week 1)
-- [ ] API specification for AI endpoints (Week 2)
-- [ ] ML model selection rationale (sentence-transformers, etc.) (Week 2)
-- [ ] Docker compose setup for local development (Week 3)
-- [ ] Production deployment architecture (Render/Railway) (Week 4)
+- [ ] Postgres migration plan with rollback strategy (Sprint 1 - Early)
+- [ ] Redis + Celery architecture design (Sprint 1 - Early)
+- [ ] API specification for AI endpoints (Sprint 1 - Mid)
+- [ ] ML model selection rationale (sentence-transformers, etc.) (Sprint 1 - Mid)
+- [ ] Docker compose setup for local development (Sprint 1 - Late)
+- [ ] Production deployment architecture (Render/Railway) (Sprint 1 - Final)
 
 **Dependencies:** @analyst's vector DB research
 
@@ -136,7 +136,7 @@ Transform Tapin from basic MVP into AI-powered hyperlocal matching platform by i
 - ML model integration and testing
 - Code reviews and documentation
 
-**Deliverables - Sprint 1 (Weeks 1-4):**
+**Deliverables - Sprint 1:**
 
 - [ ] US4.1: Auto-geocoding agent implementation
 - [ ] US4.3: Quality scoring algorithm
@@ -144,14 +144,14 @@ Transform Tapin from basic MVP into AI-powered hyperlocal matching platform by i
 - [ ] Redis + Celery worker setup
 - [ ] Background task queue implementation
 
-**Deliverables - Sprint 2 (Weeks 5-8):**
+**Deliverables - Sprint 2:**
 
 - [ ] US5.1: Semantic search with embeddings
 - [ ] US5.2: Personalized recommendation engine
 - [ ] Vector database integration (Pinecone/Weaviate)
 - [ ] Caching layer optimization
 
-**Deliverables - Sprint 3 (Weeks 9-12):**
+**Deliverables - Sprint 3:**
 
 - [ ] US6.1, US6.2: Urgent matching + real-time alerts
 - [ ] US6.3: Availability toggle for service providers
@@ -174,12 +174,12 @@ Transform Tapin from basic MVP into AI-powered hyperlocal matching platform by i
 
 **Deliverables:**
 
-- [ ] AI test strategy document (Week 1)
-- [ ] Test data generator for embeddings (Week 2)
+- [ ] AI test strategy document (Sprint 1 - Early)
+- [ ] Test data generator for embeddings (Sprint 1 - Mid)
 - [ ] Automated test suite for each AI agent (Ongoing)
-- [ ] Performance benchmarks (semantic search <500ms) (Week 6)
-- [ ] Security audit: AI model input validation (Week 8)
-- [ ] Load testing report (10K concurrent users) (Week 12)
+- [ ] Performance benchmarks (semantic search <500ms) (Sprint 2 - Mid)
+- [ ] Security audit: AI model input validation (Sprint 2 - Final)
+- [ ] Load testing report (10K concurrent users) (Sprint 3 - Final)
 
 **Test Coverage Targets:**
 
