@@ -13,7 +13,7 @@ Transform Tapin from basic MVP into AI-powered hyperlocal matching platform by i
 
 **Current State:** Phase 1 complete (auth, listings, map, reviews)  
 **Target State:** AI infrastructure operational with semantic search and auto-enrichment  
-**Timeline:** 12 weeks (3 months)
+**Approach:** Iterative development with continuous integration
 
 ---
 
@@ -31,10 +31,10 @@ Transform Tapin from basic MVP into AI-powered hyperlocal matching platform by i
 
 **Deliverables:**
 
-- [ ] Vector database recommendation report (Week 1)
-- [ ] AI success metrics dashboard design (Week 2)
-- [ ] User search behavior analysis (Week 3)
-- [ ] Competitive landscape: AI features in similar platforms (Week 4)
+- [ ] Vector database recommendation report
+- [ ] AI success metrics dashboard design
+- [ ] User search behavior analysis
+- [ ] Competitive landscape: AI features in similar platforms
 
 **Dependencies:** None (can start immediately)
 
@@ -52,10 +52,10 @@ Transform Tapin from basic MVP into AI-powered hyperlocal matching platform by i
 
 **Deliverables:**
 
-- [ ] Phase 2 sprint breakdown (3 sprints × 4 weeks each) (Week 1)
-- [ ] Feature prioritization matrix (MoSCoW method) (Week 1)
-- [ ] Risk register with mitigation plans (Week 2)
-- [ ] Weekly progress reports to stakeholders (Ongoing)
+- [ ] Phase 2 sprint breakdown (3 sprints × 4 iterations each)
+- [ ] Feature prioritization matrix (MoSCoW method)
+- [ ] Risk register with mitigation plans
+- [ ] Progress reports to stakeholders (Ongoing)
 
 **Dependencies:** @analyst's research, @architect's technical feasibility
 
@@ -73,7 +73,7 @@ Transform Tapin from basic MVP into AI-powered hyperlocal matching platform by i
 
 **Deliverables:**
 
-- [ ] Refined user stories for Sprint 1 (US4.1, US4.3, US5.1) (Week 1)
+- [ ] Refined user stories for Sprint 1 (US4.1, US4.3, US5.1)
 - [ ] Acceptance test scenarios for each story (Ongoing)
 - [ ] Sprint planning sessions (bi-weekly)
 - [ ] Story sign-off and release notes (End of each sprint)
@@ -94,8 +94,8 @@ Transform Tapin from basic MVP into AI-powered hyperlocal matching platform by i
 
 **Deliverables:**
 
-- [ ] Sprint ceremony schedule (Week 1)
-- [ ] Velocity tracking dashboard (Week 2)
+- [ ] Sprint ceremony schedule
+- [ ] Velocity tracking dashboard
 - [ ] Blocker resolution log (Ongoing)
 - [ ] Retrospective insights and improvements (End of each sprint)
 
@@ -690,49 +690,48 @@ sprints:
 
 ## 📞 Communication & Ceremonies
 
-### Daily Standups (15 minutes)
+### Daily Standups
 
-- **Time:** 10am PST
-- **Format:** Async in Slack #tapin-daily
+- **Format:** Async updates via GitHub Issues/Project Board
 - **Questions:** What did you do? What will you do? Any blockers?
 - **Facilitator:** @sm
 
-### Sprint Planning (2 hours)
+### Sprint Planning
 
-- **Frequency:** Every 4 weeks (Weeks 1, 5, 9)
+- **Frequency:** Every 4 iterations
 - **Attendees:** All agents
 - **Facilitator:** @sm
 - **Outcome:** Sprint backlog committed
 
-### Sprint Review (1 hour)
+### Sprint Review
 
-- **Frequency:** Every 4 weeks (Weeks 4, 8, 12)
+- **Frequency:** End of each sprint
 - **Attendees:** All agents + stakeholders
 - **Facilitator:** @pm
 - **Outcome:** Demo + feedback
 
-### Sprint Retrospective (1 hour)
+### Sprint Retrospective
 
-- **Frequency:** Every 4 weeks (Weeks 4, 8, 12)
+- **Frequency:** End of each sprint
 - **Attendees:** Core team only
 - **Facilitator:** @sm
 - **Outcome:** Process improvements
 
-### Weekly Sync (30 minutes)
+### Coordination Sync
 
-- **Frequency:** Every Monday
+- **Frequency:** As needed
 - **Attendees:** @pm, @architect, @dev, @sm
 - **Outcome:** Remove blockers, adjust priorities
 
 ---
 
-## 📋 Immediate Action Items (This Week)
+## 📋 Immediate Action Items
 
 ### @analyst
 
 - [ ] Research vector databases (Pinecone vs Weaviate vs pgvector)
 - [ ] Create comparison matrix with pros/cons/pricing
-- [ ] Recommendation by Friday
+- [ ] Provide recommendation
 
 ### @architect
 
