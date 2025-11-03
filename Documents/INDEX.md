@@ -6,12 +6,30 @@
 
 ## 🎯 Project Overview
 
-**Tapin** is a dual-purpose community connection platform:
+**Tapin** is an AI-powered hyperlocal matching platform connecting locals with locals across three ecosystems:
 
-- **🤝 Volunteer Opportunities** (Primary): Organizations post volunteer needs, volunteers discover and sign up for community service
-- **💼 Local Services** (Secondary): Small businesses and professionals list services for the community
+- **🤝 Volunteer Opportunities** - AI matches volunteers with meaningful community opportunities
+- **🏘️ Community Needs** - Connect people seeking help with those who can provide it
+- **💼 Service Provider Network** - Match last-minute/urgent needs with available local businesses
 
-This strategy serves both community service needs and local economic growth while maintaining a volunteer-first mission.
+**Core Innovation:** 6 AI agents work 24/7 in the background for perfect matching. Users see magic, AI does the work.
+
+---
+
+## 🚀 Strategic Planning
+
+### Vision & Innovation
+
+- **[EXEC-SUMMARY.md](EXEC-SUMMARY.md)** - ⭐ **START HERE: Executive summary of entire plan**
+- **[PLATFORM-SCOPE.md](PLATFORM-SCOPE.md)** - Platform scope and dual-purpose strategy
+- **[INNOVATION-STRATEGY.md](INNOVATION-STRATEGY.md)** - Volunteer-first innovation approach (Legacy)
+- **[AI-ARCHITECTURE-STRATEGY.md](AI-ARCHITECTURE-STRATEGY.md)** - ⭐ AI-powered invisible intelligence strategy
+- **[AI-PRODUCT-ROADMAP.md](AI-PRODUCT-ROADMAP.md)** - ⭐ Complete user stories + technical architecture (47 user stories)
+
+### Current Development Plan
+
+- **[Project-Roadmap.md](Project-Roadmap.md)** - Original roadmap (Phase 1 complete ✅)
+- **[AI-PRODUCT-ROADMAP.md](AI-PRODUCT-ROADMAP.md)** - ⭐ **Comprehensive AI-enhanced roadmap (Phases 2-5)**
 
 ---
 
