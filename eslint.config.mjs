@@ -79,6 +79,33 @@ export default [
       },
     },
   },
+
+  // Test files configuration
+  {
+    files: [
+      'frontend/src/test/**/*.{js,jsx}',
+      'frontend/**/*.test.{js,jsx}',
+      'frontend/**/*.spec.{js,jsx}',
+    ],
+    languageOptions: {
+      globals: {
+        vi: 'readonly',
+        describe: 'readonly',
+        it: 'readonly',
+        expect: 'readonly',
+        beforeEach: 'readonly',
+        afterEach: 'readonly',
+        beforeAll: 'readonly',
+        afterAll: 'readonly',
+      },
+    },
+    rules: {
+      // Disable Node.js unsupported features check for test files (jsdom provides browser APIs)
+      'n/no-unsupported-features/node-builtins': 'off',
+      'n/no-unsupported-features/es-syntax': 'off',
+    },
+  },
+
   {
     rules: {
       // Allow console for CLI tools in this repo
