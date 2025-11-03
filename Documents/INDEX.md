@@ -18,6 +18,10 @@
 
 ## 🚀 Strategic Planning
 
+### ⭐ START HERE for BMad Development
+
+- **[BMAD-QUICKSTART.md](BMAD-QUICKSTART.md)** - 🎯 **READ THIS FIRST: Week 1 assignments & how to start**
+
 ### Vision & Innovation
 
 - **[EXEC-SUMMARY.md](EXEC-SUMMARY.md)** - ⭐ **START HERE: Executive summary of entire plan**
@@ -30,6 +34,7 @@
 
 - **[Project-Roadmap.md](Project-Roadmap.md)** - Original roadmap (Phase 1 complete ✅)
 - **[AI-PRODUCT-ROADMAP.md](AI-PRODUCT-ROADMAP.md)** - ⭐ **Comprehensive AI-enhanced roadmap (Phases 2-5)**
+- **[BMAD-ORCHESTRATION-PLAN.md](BMAD-ORCHESTRATION-PLAN.md)** - ⭐ **BMad agent assignments & 12-week execution plan**
 
 ---
 
