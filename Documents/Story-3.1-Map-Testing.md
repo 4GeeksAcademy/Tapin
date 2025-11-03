@@ -2,8 +2,19 @@
 
 **Date:** November 3, 2025  
 **Tester:** @qa  
-**Story:** 3.1 - Interactive Map Integration  
+**Story:** 3.1 - Interactive Map Integration for Dual-Purpose Platform  
 **Status:** ✅ PASSED
+
+---
+
+## Platform Context
+
+**Tapin** is a dual-purpose community connection platform:
+
+- **🤝 Volunteer Opportunities** (Primary): Organizations post volunteer needs visible on map
+- **💼 Local Services** (Secondary): Businesses list services discoverable by location
+
+The map integration supports both listing types with appropriate filtering.
 
 ---
 

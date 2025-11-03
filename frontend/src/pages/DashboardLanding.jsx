@@ -6,15 +6,15 @@ export default function DashboardLanding({ onEnter }) {
     <div className="landing-root">
       <div className="landing-hero">
         <img src={logoTransparent} alt="Tapin logo" className="landing-logo" />
-        <h1 className="landing-title">Tapin — discover local talent, fast.</h1>
+        <h1 className="landing-title">Tapin — connect your community</h1>
         <p className="landing-sub">
-          A lightweight mobile-first marketplace to find and book local makers, tutors and
-          professionals — simple, fast, and privacy-friendly.
+          Find volunteer opportunities to give back, or discover local services from small
+          businesses and professionals. One platform to strengthen your community.
         </p>
 
         <div className="landing-cta-row">
           <button className="btn btn-primary landing-cta" onClick={onEnter}>
-            Get started — it's free
+            Explore opportunities
           </button>
           <button className="btn btn-outline landing-cta" onClick={onEnter}>
             Log in
@@ -22,12 +22,12 @@ export default function DashboardLanding({ onEnter }) {
         </div>
 
         <ul className="landing-features">
-          <li>Fast mobile UX optimized for local discovery</li>
-          <li>Private by design — prototype with no tracking</li>
-          <li>List a service in under 60 seconds</li>
+          <li>🤝 Volunteer opportunities: Find meaningful ways to give back</li>
+          <li>💼 Local services: Discover small businesses and professionals</li>
+          <li>📍 Map view: Browse opportunities by location</li>
         </ul>
 
-        <div className="landing-footer-note">No credit card required • Prototype</div>
+        <div className="landing-footer-note">Free to use • School Project</div>
       </div>
     </div>
   );

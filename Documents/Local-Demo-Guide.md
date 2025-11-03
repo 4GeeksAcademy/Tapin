@@ -4,6 +4,15 @@
 
 ---
 
+## 🎯 About Tapin
+
+**Tapin** is a dual-purpose community connection platform:
+
+- **🤝 Volunteer Opportunities** (Primary): Find and sign up for community service
+- **💼 Local Services** (Secondary): Discover local businesses and professionals
+
+---
+
 ## 🎯 Why Demo Locally?
 
 - ✅ **Zero cost** - No deployment needed

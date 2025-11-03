@@ -6,12 +6,15 @@ export default function Header() {
       <div className="brand">
         <div>
           <h1>Tapin</h1>
-          <p className="subtitle">Listings prototype</p>
+          <p className="subtitle">Community Connections</p>
         </div>
       </div>
 
       <div className="search-row">
-        <input className="search" placeholder="Search listings, location or organization" />
+        <input
+          className="search"
+          placeholder="Search volunteer opportunities, services, or location"
+        />
       </div>
     </header>
   );

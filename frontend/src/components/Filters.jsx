@@ -1,6 +1,6 @@
 import React from 'react';
 
-const chips = ['All', 'Events', 'Volunteering', 'Remote', 'Community'];
+const chips = ['All', 'Volunteer', 'Community Service', 'Environmental', 'Business', 'Services'];
 
 export default function Filters({ active, onChange }) {
   return (

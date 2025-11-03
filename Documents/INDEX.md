@@ -4,6 +4,17 @@
 
 ---
 
+## 🎯 Project Overview
+
+**Tapin** is a dual-purpose community connection platform:
+
+- **🤝 Volunteer Opportunities** (Primary): Organizations post volunteer needs, volunteers discover and sign up for community service
+- **💼 Local Services** (Secondary): Small businesses and professionals list services for the community
+
+This strategy serves both community service needs and local economic growth while maintaining a volunteer-first mission.
+
+---
+
 ## 📚 Quick Start Guides
 
 ### Getting Started

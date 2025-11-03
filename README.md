@@ -1,8 +1,13 @@
 # Tapin
 
-**A community volunteer marketplace platform built with Flask + React**
+**A community connection platform built with Flask + React**
 
-Tapin is a full-stack web application that connects volunteers with community service opportunities. Built as a school project demonstrating modern web development practices using the BMad Method agent framework.
+Tapin connects communities in two ways:
+
+- **Volunteer Opportunities**: Organizations post volunteer needs, and volunteers discover meaningful community service opportunities
+- **Local Services**: Small businesses and professionals can list their services for the community
+
+Built as a school project demonstrating modern web development practices.
 
 ---
 
@@ -17,12 +22,12 @@ Tapin is a full-stack web application that connects volunteers with community se
 
 ### Sprint 1 - Core Features ✅
 
-- ✅ User authentication (register, login, JWT tokens)
+- ✅ User authentication (volunteers, organizations, and businesses)
 - ✅ Password reset via email
-- ✅ Listing CRUD operations (Create, Read, Update, Delete)
+- ✅ Dual listing types: Volunteer opportunities + Local services
 - ✅ Volunteer sign-up system
-- ✅ Reviews and ratings (1-5 stars)
-- ✅ Ownership verification (edit/delete only your listings)
+- ✅ Reviews and ratings
+- ✅ Ownership verification (users manage their own listings)
 
 ### Sprint 2 - Testing & Quality ✅
 
@@ -34,10 +39,10 @@ Tapin is a full-stack web application that connects volunteers with community se
 ### Sprint 3 - Map Integration ✅
 
 - ✅ Interactive map view with Leaflet + OpenStreetMap (FREE, no API keys)
-- ✅ List/Map toggle view
+- ✅ List/Map toggle view to find opportunities by location
 - ✅ Markers with popups showing listing details
-- ✅ Optional coordinate input for listings
-- ✅ Auto-fit map bounds to show all markers
+- ✅ Filter by category (Volunteer or Business listings)
+- ✅ Auto-fit map bounds to show all listings
 
 ---
 

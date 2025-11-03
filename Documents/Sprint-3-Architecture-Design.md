@@ -3,17 +3,28 @@
 **Date:** November 3, 2025  
 **Agent:** @architect  
 **Sprint:** 3 - Map Integration & Deployment  
-**Updated:** November 3, 2025 (Changed to free deployment options)
+**Updated:** November 3, 2025 (Changed to free deployment options + scope realignment)
 
 ---
 
 ## Executive Summary
 
-This document provides architectural recommendations for Sprint 3, covering map integration and deployment options. All recommendations prioritize **zero cost** for school projects, simplicity, and alignment with the current tech stack (Flask + React/Vite + SQLite dev).
+This document provides architectural recommendations for Sprint 3, covering map integration and deployment options for the **Tapin** community connection platform.
+
+### Platform Scope
+
+**Tapin** serves a dual purpose:
+
+1. **🤝 Volunteer Opportunities** (Primary): Organizations post volunteer needs, volunteers browse and sign up for community service
+2. **💼 Local Services** (Secondary): Small businesses and professionals list services for discovery by community members
+
+This dual strategy allows filtering between volunteer opportunities and business services while maintaining volunteer work as the primary focus.
+
+All recommendations prioritize **zero cost** for school projects, simplicity, and alignment with the current tech stack (Flask + React/Vite + SQLite dev).
 
 **Key Changes:**
 
-- ✅ Map integration: Leaflet + OpenStreetMap (FREE)
+- ✅ Map integration: Leaflet + OpenStreetMap (FREE) - supports both volunteer and business listings
 - ✅ Deployment option 1: Render free tier (recommended for live demos)
 - ✅ Deployment option 2: Local demo with screen recording (recommended for submissions)
 - ❌ Removed: Railway ($15/month) - overkill for school projects
