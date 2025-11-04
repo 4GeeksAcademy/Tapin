@@ -10,9 +10,7 @@ export default function ListingCard({ listing = {}, onOpen }) {
           {image ? (
             <img src={image} alt={title || 'Listing image'} loading="lazy" />
           ) : (
-            <div className="placeholder" aria-hidden="true">
-              📷
-            </div>
+            <div className="placeholder" aria-hidden="true">No Image</div>
           )}
           {location && <div className="media-caption">{location}</div>}
         </div>
@@ -21,9 +19,7 @@ export default function ListingCard({ listing = {}, onOpen }) {
         <p className="card-desc">{description || 'No description provided.'}</p>
 
         <div className="card-meta">
-          <span className="muted" aria-hidden="true">
-            {location || ''}
-          </span>
+          <span className="muted" aria-hidden="true">{location || ''}</span>
           <button className="btn-primary" onClick={() => onOpen && onOpen(listing)}>
             View
           </button>
@@ -32,3 +28,4 @@ export default function ListingCard({ listing = {}, onOpen }) {
     </li>
   );
 }
+

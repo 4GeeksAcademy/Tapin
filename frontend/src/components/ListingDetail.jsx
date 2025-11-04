@@ -7,9 +7,7 @@ export default function ListingDetail({ listing, onClose }) {
       <div className="detail-card">
         <header className="detail-header">
           <h2>{listing.title}</h2>
-          <button className="close" onClick={onClose} aria-label="Close">
-            ×
-          </button>
+          <button className="close" onClick={onClose} aria-label="Close">Close</button>
         </header>
         <div className="detail-body">
           {listing.location && (
@@ -29,3 +27,4 @@ export default function ListingDetail({ listing, onClose }) {
     </div>
   );
 }
+

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { API_BASE } from '../config';
 
 export default function LoginForm({ onLogin, mode = 'login' }) {
   const [email, setEmail] = useState('');
@@ -9,8 +10,7 @@ export default function LoginForm({ onLogin, mode = 'login' }) {
     e.preventDefault();
     setError(null);
     try {
-      const url =
-        mode === 'login' ? 'http://127.0.0.1:5000/login' : 'http://127.0.0.1:5000/register';
+      const url = mode === 'login' ? `${API_BASE}/login` : `${API_BASE}/register`;
       const res = await fetch(url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

@@ -7,6 +7,7 @@ import Filters from './components/Filters';
 import LoginForm from './components/LoginForm';
 import CreateListingForm from './components/CreateListingForm';
 import DashboardLanding from './pages/DashboardLanding';
+import { API_BASE } from './config';
 
 export default function App() {
   const [listings, setListings] = useState([]);
@@ -26,7 +27,7 @@ export default function App() {
     try {
       const params = new URLSearchParams();
       if (filter && filter !== 'All') params.set('q', filter);
-      const url = `http://127.0.0.1:5000/listings${params.toString() ? `?${params.toString()}` : ''}`;
+      const url = `${API_BASE}/listings${params.toString() ? `?${params.toString()}` : ''}`;
       const res = await fetch(url);
       if (!res.ok) throw new Error(`status ${res.status}`);
       const data = await res.json();
@@ -51,7 +52,7 @@ export default function App() {
     async function fetchMe() {
       if (!token) return setUser(null);
       try {
-        const res = await fetch('http://127.0.0.1:5000/me', {
+        const res = await fetch(`${API_BASE}/me`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         if (!res.ok) {
@@ -162,7 +163,7 @@ export default function App() {
               <ul className="listings">
                 {listings.map((l) => (
                   <li key={l.id} className="listing-item">
-                    <ListingCard listing={l} onSelect={handleSelect} />
+                    <ListingCard listing={l} onOpen={handleSelect} />
                   </li>
                 ))}
               </ul>

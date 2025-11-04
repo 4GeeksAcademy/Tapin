@@ -24,6 +24,7 @@
     "bmad-method": "tools/bmad-npx-wrapper.js"
   },
   "scripts": {
+    "dev": "node dev.js",
     "build": "node tools/cli.js build",
     "build:agents": "node tools/cli.js build --agents-only",
     "build:teams": "node tools/cli.js build --teams-only",

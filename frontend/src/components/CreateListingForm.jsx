@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { API_BASE } from '../config';
 
 export default function CreateListingForm({ token, onCreated }) {
   const [title, setTitle] = useState('');
@@ -10,7 +11,7 @@ export default function CreateListingForm({ token, onCreated }) {
     e.preventDefault();
     setError(null);
     try {
-      const res = await fetch('http://127.0.0.1:5000/listings', {
+      const res = await fetch(`${API_BASE}/listings`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

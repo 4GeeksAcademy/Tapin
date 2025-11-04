@@ -6,12 +6,14 @@ from flask_jwt_extended import JWTManager, create_access_token, jwt_required, ge
 from flask_cors import CORS
 from datetime import datetime
 import os
+from dotenv import load_dotenv
 from itsdangerous import URLSafeTimedSerializer, SignatureExpired, BadSignature
 import smtplib
 from email.message import EmailMessage
 
 
 app = Flask(__name__)
+load_dotenv()
 base_dir = os.path.abspath(os.path.dirname(__file__))
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(base_dir, 'data.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -244,4 +246,6 @@ def delete_listing(id):
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    host = os.environ.get('HOST', '127.0.0.1')
+    port = int(os.environ.get('PORT', '5000'))
+    app.run(debug=True, host=host, port=port)

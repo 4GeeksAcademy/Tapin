@@ -47,3 +47,20 @@ This directory will contain the Flask backend for the Tapin project.
 1. Initialize a Python virtual environment.
 2. Install Flask and other dependencies.
 3. Implement API endpoints as described in the project documentation.
+
+## .env support
+
+This app loads environment variables from a `.env` file in `backend/` using python-dotenv.
+
+Example `.env`:
+
+```
+SECRET_KEY=change-me
+JWT_SECRET_KEY=change-me-too
+SECURITY_PASSWORD_SALT=some-salt
+SMTP_HOST=
+SMTP_PORT=587
+SMTP_USER=
+SMTP_PASS=
+SMTP_USE_TLS=true
+```

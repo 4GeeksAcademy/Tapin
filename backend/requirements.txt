@@ -6,3 +6,4 @@ itsdangerous
 # Cross-origin resource sharing for frontend <-> backend
 flask-cors
 # Optional: bcrypt or passlib for stronger password hashing in production
+python-dotenv
