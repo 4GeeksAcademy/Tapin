@@ -216,6 +216,20 @@ body {
   min-height: 100vh;
 }
 
+/* Top Section - Filters and Auth */
+.top-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  margin-bottom: var(--space-8);
+}
+
+.auth-section {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
 /* Header */
 .app-header {
   display: flex;
@@ -459,6 +473,7 @@ header h1 {
   overflow: hidden;
   background: var(--neutral-100);
   position: relative;
+  margin-bottom: var(--space-3);
 }
 
 .card-media img {
@@ -480,6 +495,51 @@ header h1 {
   justify-content: center;
   font-size: var(--fs-4xl);
   background: linear-gradient(135deg, var(--neutral-100), var(--neutral-200));
+}
+
+/* Category Badge */
+.category-badge {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  color: white;
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  backdrop-filter: blur(8px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Card Content */
+.card-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  flex: 1;
+}
+
+/* Location Tag */
+.location-tag {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+  margin-top: auto;
+}
+
+/* Card Footer */
+.card-footer {
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--border);
+  margin-top: auto;
+}
+
+.card-footer .btn {
+  width: 100%;
 }
 
 .media-caption {

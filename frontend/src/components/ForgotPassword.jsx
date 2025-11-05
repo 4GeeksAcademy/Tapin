@@ -70,10 +70,10 @@ export default function ForgotPassword({ onClose, onSuccess }) {
             </div>
 
             <div className="form-actions">
-              <button type="button" onClick={onClose} disabled={loading}>
+              <button type="button" className="btn btn-secondary" onClick={onClose} disabled={loading}>
                 Cancel
               </button>
-              <button type="submit" className="cta" disabled={loading}>
+              <button type="submit" className="btn btn-primary" disabled={loading}>
                 {loading ? 'Sending...' : 'Send Reset Link'}
               </button>
             </div>
@@ -84,7 +84,7 @@ export default function ForgotPassword({ onClose, onSuccess }) {
               ✓ If an account exists for {email}, a password reset link has been sent.
             </div>
             <p>Check your email for the reset link.</p>
-            <button className="cta" onClick={onClose} style={{ width: '100%' }}>
+            <button className="btn btn-primary" onClick={onClose} style={{ width: '100%' }}>
               Close
             </button>
           </div>

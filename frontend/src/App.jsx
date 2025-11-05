@@ -112,11 +112,10 @@ export default function App() {
     <div className="app-root">
       <Header />
 
-      <div
-        style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12 }}
-      >
+      <div className="top-section">
         <Filters active={activeFilter} onChange={handleFilterChange} />
-        <div>
+        
+        <div className="auth-section">
           {user ? (
             <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
               <span>Hi, {user.email}</span>

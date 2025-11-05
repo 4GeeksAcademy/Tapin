@@ -89,6 +89,8 @@ class Listing(db.Model):
     location = db.Column(db.String(200))
     latitude = db.Column(db.Float, nullable=True)
     longitude = db.Column(db.Float, nullable=True)
+    category = db.Column(db.String(100), nullable=True)  # Community, Environment, Education, Health, Animals
+    image_url = db.Column(db.String(500), nullable=True)  # URL to listing image
     owner_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
@@ -100,6 +102,8 @@ class Listing(db.Model):
             "location": self.location,
             "latitude": self.latitude,
             "longitude": self.longitude,
+            "category": self.category,
+            "image_url": self.image_url,
             "owner_id": self.owner_id,
             "created_at": self.created_at.isoformat() if self.created_at else None,
         }
@@ -346,14 +350,21 @@ def confirm_reset(token):
 
 @app.route('/listings', methods=['GET'])
 def get_listings():
-    # Support simple filtering via query params: q (text search on title/description), location
+    # Support simple filtering via query params: q (text search on title/description or category), location
     q = request.args.get('q', type=str)
     location = request.args.get('location', type=str)
 
     query = Listing.query
     if q:
-        like = f"%{q}%"
-        query = query.filter((Listing.title.ilike(like)) | (Listing.description.ilike(like)))
+        # Check if q matches a category exactly (case-insensitive)
+        categories = ['Community', 'Environment', 'Education', 'Health', 'Animals']
+        if q.lower() in [c.lower() for c in categories]:
+            # Filter by category
+            query = query.filter(Listing.category.ilike(q))
+        else:
+            # Text search on title/description
+            like = f"%{q}%"
+            query = query.filter((Listing.title.ilike(like)) | (Listing.description.ilike(like)))
     if location:
         query = query.filter(Listing.location.ilike(f"%{location}%"))
 
