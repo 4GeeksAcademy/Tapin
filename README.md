@@ -1,107 +1,280 @@
-# Tapin
+# Tapin - Community Connection Platform
 
-**A community connection platform built with Flask + React**
+**A Flask + React platform connecting communities through volunteer opportunities and local services**
+
+## 📖 What is Tapin?
 
 Tapin connects communities in two ways:
 
 - **Volunteer Opportunities**: Organizations post volunteer needs, and volunteers discover meaningful community service opportunities
-- **Local Services**: Small businesses and professionals can list their services for the community
+- **Local Services**: Small businesses and professionals list their services for the community
 
-Built as a school project demonstrating modern web development practices.
-
----
-
-## 🚀 Live Demo
-
-- **Local Demo:** [See Local Demo Guide](Documents/Local-Demo-Guide.md)
-- **Deployment:** [See Render Deployment Guide](Documents/Story-3.2-Render-Deployment.md) (FREE tier)
+Built with modern web development practices: React, Flask, PostgreSQL, and Leaflet maps.
 
 ---
 
 ## ✨ Features
 
-### Sprint 1 - Core Features ✅
+### Phase 1 - Core Features ✅ (Current)
 
-- ✅ User authentication (volunteers, organizations, and businesses)
-- ✅ Password reset via email
-- ✅ Dual listing types: Volunteer opportunities + Local services
-- ✅ Volunteer sign-up system
-- ✅ Reviews and ratings
-- ✅ Ownership verification (users manage their own listings)
+- ✅ **Authentication**: Volunteers, organizations, and business registration
+- ✅ **Dual Listings**: Post volunteer opportunities OR local services
+- ✅ **Signup System**: Volunteers can sign up for opportunities
+- ✅ **Reviews & Ratings**: Community feedback system
+- ✅ **Ownership Verification**: Users manage their own listings
+- ✅ **Password Reset**: Email-based password recovery
+- ✅ **Interactive Maps**: View opportunities by location (Leaflet + OpenStreetMap)
+- ✅ **List/Map Toggle**: Switch between list and map views
+- ✅ **Category Filtering**: Filter by volunteer or business listings
+- ✅ **Comprehensive Tests**: 30+ backend tests, 8+ frontend tests
 
-### Sprint 2 - Testing & Quality ✅
+### Phase 2 - Future Enhancements 🔜
 
-- ✅ Backend test suite (32+ test cases with pytest)
-- ✅ Frontend test framework (Vitest + React Testing Library)
-- ✅ Component tests (ReviewForm with 10 test cases)
-- ✅ Code linting (ESLint configured)
-
-### Sprint 3 - Map Integration ✅
-
-- ✅ Interactive map view with Leaflet + OpenStreetMap (FREE, no API keys)
-- ✅ List/Map toggle view to find opportunities by location
-- ✅ Markers with popups showing listing details
-- ✅ Filter by category (Volunteer or Business listings)
-- ✅ Auto-fit map bounds to show all listings
+- PostgreSQL migration (from SQLite)
+- Redis + Celery for async tasks
+- Advanced AI agent features
+- Semantic search with embeddings
 
 ---
 
 ## 🛠 Tech Stack
 
-**Backend:**
-
-- Flask 2.2+ (Python web framework)
-- SQLAlchemy 3.0 (ORM)
-- Flask-JWT-Extended 4.4 (Authentication)
-- SQLite (Development) / PostgreSQL (Production)
-- pytest (Testing)
-
-**Frontend:**
-
-- React 18.2 (UI library)
-- Vite 5.0 (Build tool)
-- Leaflet 1.9.4 + react-leaflet 4.2.1 (Maps)
-- Vitest + React Testing Library (Testing)
-
-**Deployment:**
-
-- Render (FREE tier - recommended)
-- Local demo + screen recording (for submissions)
+| Layer        | Technologies                                      |
+| ------------ | ------------------------------------------------- |
+| **Frontend** | React 18.2, Vite 5.0, Tailwind CSS, Leaflet 1.9.4 |
+| **Backend**  | Flask 2.2+, SQLAlchemy 3.0, Flask-JWT 4.4         |
+| **Database** | SQLite (dev), PostgreSQL (prod ready)             |
+| **Testing**  | pytest (backend), Vitest (frontend)               |
+| **Maps**     | Leaflet + OpenStreetMap (FREE, no API keys)       |
 
 ---
 
 ## 📋 Prerequisites
 
-- Python 3.9+
-- Node.js 18+
-- Git
+Before starting, ensure you have:
+
+- **Python 3.10+**
+- **Node.js 18+**
+- **Git**
+- **macOS/Linux/Windows with a terminal**
 
 ---
 
-## 🚀 Quick Start
+## 🚀 Getting Started (5 minutes)
 
-### Option 1: Local Demo (Recommended for School Projects)
+### Step 1: Clone & Navigate
 
 ```bash
-# 1. Clone repository
 git clone https://github.com/4GeeksAcademy/Tapin.git
 cd Tapin
+```
 
-# 2. Backend setup
+### Step 2: Backend Setup
+
+Open a terminal in the `backend` folder:
+
+```bash
 cd backend
-python3 -m venv .venv
-source .venv/bin/activate  # macOS/Linux
-pip install -r requirements.txt
-python -c "from app import app, db; app.app_context().push(); db.create_all()"
-python app.py
 
-# 3. Frontend setup (new terminal)
+# Create virtual environment
+python3 -m venv .venv
+
+# Activate it
+source .venv/bin/activate  # macOS/Linux
+# OR
+.venv\Scripts\activate  # Windows
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Initialize database
+python -c "from app import app, db; app.app_context().push(); db.create_all()"
+
+# Optionally seed sample data
+python seed_sample_data.py
+
+# Start Flask server
+python app.py
+```
+
+✅ Backend running at: `http://127.0.0.1:5000`
+
+### Step 3: Frontend Setup
+
+Open a **new terminal** in the `frontend` folder:
+
+```bash
 cd frontend
+
+# Install dependencies
 npm install
+
+# Start development server
+npm run dev
+```
+
+✅ Frontend running at: `http://localhost:5173`
+
+---
+
+## ✅ Running Tests
+
+### Backend Tests
+
+```bash
+cd backend
+source .venv/bin/activate
+pytest tests/
+```
+
+### Frontend Tests
+
+```bash
+cd frontend
+npm run test
+```
+
+---
+
+## 📚 Documentation
+
+| Document                                | Purpose                                       |
+| --------------------------------------- | --------------------------------------------- |
+| [ARCHITECTURE.md](docs/ARCHITECTURE.md) | System design, database schema, API endpoints |
+| [CONTRIBUTING.md](CONTRIBUTING.md)      | How to contribute code                        |
+| [API_DOCS.md](backend/API_DOCS.md)      | Complete API reference                        |
+
+---
+
+## 🚢 Deployment
+
+### Deploy to Render (FREE tier)
+
+1. Fork this repository
+2. Connect to Render at [render.com](https://render.com)
+3. Create Web Service from GitHub
+4. Build command: `pip install -r requirements.txt && npm install && npm run build`
+5. Start command: `python app.py`
+6. Add environment variables from `.env.sample`
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed deployment steps.
+
+---
+
+## � Project Structure
+
+```
+Tapin/
+├── backend/              # Flask API
+│   ├── app.py           # Main Flask app
+│   ├── auth.py          # Authentication logic
+│   ├── tests/           # Test suite
+│   └── requirements.txt  # Python dependencies
+│
+├── frontend/            # React application
+│   ├── src/
+│   │   ├── App.jsx      # Main component
+│   │   ├── pages/       # Route pages
+│   │   └── components/  # React components
+│   ├── package.json     # Node dependencies
+│   └── vite.config.js   # Vite configuration
+│
+├── docs/               # Documentation
+├── Design-Assets/      # Brand assets, mockups
+└── README.md          # This file
+```
+
+---
+
+## 🤝 Contributing
+
+We welcome contributions! Please:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/your-feature`)
+3. Commit your changes (`git commit -m 'Add feature'`)
+4. Push to the branch (`git push origin feature/your-feature`)
+5. Open a Pull Request
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
+
+---
+
+## 📝 License
+
+This project is licensed under the MIT License - see [LICENSE](LICENSE) file for details.
+
+---
+
+## 🆘 Troubleshooting
+
+### Backend won't start
+
+```bash
+# Make sure virtual environment is activated
+source .venv/bin/activate
+
+# Clear cache and reinstall
+rm -rf .venv
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+
+# Try running directly
+python app.py
+```
+
+### Port 5000 already in use
+
+```bash
+# macOS/Linux: Kill process using port 5000
+lsof -ti:5000 | xargs kill -9
+
+# Windows: Use netstat or Task Manager to free port 5000
+```
+
+### Frontend won't load
+
+```bash
+cd frontend
+rm -rf node_modules package-lock.json
+npm install
+npm run dev
+```
+
+### Database issues
+
+```bash
+cd backend
+rm data.db  # Delete old database
+python -c "from app import app, db; app.app_context().push(); db.create_all()"
+python seed_sample_data.py
+```
+
+---
+
+## 🎯 What's Next?
+
+- **Try the app**: Visit http://localhost:5173 and explore listings
+- **Create an account**: Sign up as a volunteer or organization
+- **Post a listing**: Create a volunteer opportunity or local service
+- **View on map**: See all listings on the interactive map
+- **Run tests**: Verify everything works with `pytest` and `npm run test`
+
+---
+
+## 📞 Questions or Issues?
+
+- Check [CONTRIBUTING.md](CONTRIBUTING.md) for development guidelines
+- Review API docs at [backend/API_DOCS.md](backend/API_DOCS.md)
+- Check system architecture at [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)
+
+**Happy coding! 🚀**
 npm run dev
 
 # 4. Open http://localhost:5173
-```
+
+````
 
 **� Complete guide:** [Local-Demo-Guide.md](Documents/Local-Demo-Guide.md)
 
@@ -145,7 +318,7 @@ cd backend
 source .venv/bin/activate
 pytest
 pytest --cov=. --cov-report=html  # With coverage
-```
+````
 
 ### Frontend Tests
 
