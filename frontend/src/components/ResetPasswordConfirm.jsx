@@ -105,7 +105,7 @@ export default function ResetPasswordConfirm() {
               />
             </div>
 
-            <button type="submit" className="cta" disabled={loading} style={{ width: '100%' }}>
+            <button type="submit" className="btn btn-primary" disabled={loading} style={{ width: '100%' }}>
               {loading ? 'Resetting...' : 'Reset Password'}
             </button>
           </form>

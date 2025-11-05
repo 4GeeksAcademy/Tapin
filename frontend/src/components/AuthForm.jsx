@@ -103,14 +103,7 @@ export default function AuthForm({ onLogin }) {
             <button
               type="button"
               onClick={() => setShowForgotPassword(true)}
-              style={{
-                background: 'none',
-                border: 'none',
-                color: '#0066cc',
-                fontSize: '0.85rem',
-                cursor: 'pointer',
-                marginTop: '8px',
-              }}
+              className="forgot-password-link"
             >
               Forgot Password?
             </button>
