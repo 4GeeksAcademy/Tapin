@@ -63,7 +63,7 @@ export default function AuthForm({ onLogin }) {
           </button>
         </div>
 
-        <form onSubmit={handleSubmit} className="form-group">
+        <form onSubmit={handleSubmit}>
           <input
             type="email"
             placeholder="Email"
@@ -93,7 +93,7 @@ export default function AuthForm({ onLogin }) {
             />
           )}
 
-          {error && <p className="error">{error}</p>}
+          {error && <p className="error" style={{ marginBottom: 'var(--space-3)' }}>{error}</p>}
 
           <button type="submit" className="btn btn-primary" disabled={loading}>
             {loading ? '...' : mode === 'login' ? 'Login' : 'Register'}
