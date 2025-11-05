@@ -1,99 +1,148 @@
 # Tapin Quick Start Guide
 
-This guide will help you get both the backend and frontend running quickly.
+Get the Tapin volunteer platform running in minutes!
 
-## Prerequisites
+## 🚀 Quick Start (Choose Your Platform)
 
-- **Python 3.10+** (for backend)
-- **Node.js 20+** (for frontend)
-- **Git** (to clone the repository)
+### Windows (One Command)
 
-## Running the Backend (Flask API)
-
-1. **Navigate to the backend directory:**
-
-   ```bash
-   cd backend
-   ```
-
-2. **Create and activate a virtual environment:**
-
-   ```bash
-   python3 -m venv .venv
-   source .venv/bin/activate
-   ```
-
-3. **Install dependencies:**
-
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. **Run database migrations:**
-
-   ```bash
-   python manage.py upgrade
-   ```
-
-5. **Seed sample data (optional):**
-
-   ```bash
-   python seed_sample_data.py
-   ```
-
-6. **Start the Flask server:**
-   ```bash
-   python app.py
-   ```
-
-The backend API will be available at **http://127.0.0.1:5000**
-
-### Test the Backend
-
-Open in your browser:
-
-- Health check: http://127.0.0.1:5000/api/health
-- Listings: http://127.0.0.1:5000/api/listings
-
-## Running the Frontend (React + Vite)
-
-1. **Open a new terminal** and navigate to the frontend directory:
-
-   ```bash
-   cd frontend
-   ```
-
-2. **Install dependencies:**
-
-   ```bash
-   npm install
-   ```
-
-3. **Start the development server:**
-   ```bash
-   npm run dev
-   ```
-
-The frontend will be available at **http://localhost:5173**
-
-## Running Both Simultaneously
-
-You can run both the backend and frontend at the same time by opening two separate terminal windows:
-
-**Terminal 1 (Backend):**
-
-```bash
-cd backend
-source .venv/bin/activate
-python app.py
+Simply double-click `start.bat` or run:
+```cmd
+start.bat
 ```
 
-**Terminal 2 (Frontend):**
+This automatically:
+- Checks dependencies
+- Installs packages
+- Starts both servers
+- Opens your browser
 
+### macOS/Linux
+
+Run the startup script:
 ```bash
+chmod +x start.sh
+./start.sh
+```
+
+### GitHub Codespaces
+
+Click the green "Code" button → "Codespaces" → "Create codespace on main"
+
+The environment will auto-configure and forward ports. Click the "Ports" tab and open the Frontend port (5173).
+
+---
+
+## 📋 Prerequisites
+
+Install these before starting:
+
+### Windows
+```powershell
+# Install Python
+winget install Python.Python.3.11
+
+# Install Node.js
+winget install OpenJS.NodeJS.LTS
+```
+
+### macOS
+```bash
+# Install Homebrew (if not installed)
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# Install Python and Node.js
+brew install python@3.11 node
+```
+
+### Linux (Ubuntu/Debian)
+```bash
+# Install Python and Node.js
+sudo apt update
+sudo apt install python3.11 python3-pip nodejs npm
+```
+
+---
+
+## 🛠️ Manual Setup
+
+If automated scripts don't work, follow these platform-specific instructions:
+
+### Windows
+
+**Terminal 1 - Backend:**
+```powershell
+# Create and activate virtual environment
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+
+# Install dependencies
+pip install -r backend\requirements.txt
+
+# Run migrations
+python backend\manage.py upgrade
+
+# Start server
+python backend\app.py
+```
+
+**Terminal 2 - Frontend:**
+```powershell
+# Install dependencies
 cd frontend
+npm install
+
+# Start dev server
 npm run dev
 ```
+
+### macOS/Linux
+
+**Terminal 1 - Backend:**
+```bash
+# Create and activate virtual environment
+python3 -m venv .venv
+source .venv/bin/activate
+
+# Install dependencies
+pip install -r backend/requirements.txt
+
+# Run migrations
+python backend/manage.py upgrade
+
+# Start server
+python backend/app.py
+```
+
+**Terminal 2 - Frontend:**
+```bash
+# Install dependencies
+cd frontend
+npm install
+
+# Start dev server
+npm run dev
+```
+
+### GitHub Codespaces
+
+Codespaces auto-installs everything. Just run:
+```bash
+# Terminal 1
+python backend/app.py
+
+# Terminal 2
+cd frontend && npm run dev
+```
+
+---
+
+## 🌐 Access the Application
+
+Once running:
+- **Frontend**: http://localhost:5173
+- **Backend API**: http://127.0.0.1:5000
+- **Health Check**: http://127.0.0.1:5000/api/health
 
 ## Environment Variables (Optional)
 
