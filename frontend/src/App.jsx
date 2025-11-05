@@ -113,8 +113,6 @@ export default function App() {
       <Header />
 
       <div className="top-section">
-        <Filters active={activeFilter} onChange={handleFilterChange} />
-        
         <div className="auth-section">
           {user ? (
             <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
@@ -138,6 +136,8 @@ export default function App() {
             />
           )}
         </div>
+
+        <Filters active={activeFilter} onChange={handleFilterChange} />
       </div>
 
       <main>
